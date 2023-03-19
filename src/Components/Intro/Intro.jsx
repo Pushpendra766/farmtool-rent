@@ -1,20 +1,22 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const Intro = () => {
   const history = useNavigate();
+  const {t} = useTranslation();
   return (
     <div className="bg-gradient-to-b from-[#AFF1DA] to-[#F9EA8F] text-[#3E3E3E] pt-10">
       <div className=" lg:pt-20 mx-8 md:mx-20 text-center pt-40 flex flex-col md:gap-5 mobile:gap-2 bg-blue-200 z-40">
         <p className="text-3xl md:text-5xl font-bold mx-auto md:w-5/12 mobile:w-11/12 whitespace-nowrap">
-          Helping Farmers,
+          {t("intro_title")},
           <br />
           <Typewriter
             words={[
-              " Empowering Nation",
-              "Advancing Agriculture",
-              "Driving Growth",
+              t("tr_line1"),
+              t("tr_line2"),
+              t("tr_line3"),
             ]}
             loop={false}
             cursor
@@ -25,10 +27,7 @@ const Intro = () => {
           />
         </p>
         <p className="md:text-xl w-10/12 text-lg lg:w-6/12 mx-auto">
-          Farm smarter, not harder - Discover the best farming tools on our
-          platform. From plows to harvesters, from tilling to harvesting, we've
-          got you covered, we have everything you need to cultivate a successful
-          harvest and take your farm to the next level.
+          {t('intro_subtitle')}
         </p>
         <div className="flex flex-row gap-6 md:gap-8 justify-center text-[#ffffff] text-lg md:text-xl">
           <button className=" pt-1 md:pt-2 pb-2 md:pb-3 px-4 md:px-6 ">
