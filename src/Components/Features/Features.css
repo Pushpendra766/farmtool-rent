@@ -1,0 +1,439 @@
+* {
+  box-sizing: border-box;
+}
+
+#body {
+  height: 100%;
+  min-height: 100%;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  height: 4000px;
+  overflow-y: scroll;
+}
+
+#viewport {
+  position: fixed;
+  top: 50px;
+  width: 200%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#world {
+  position: absolute;
+  background-color: black;
+  background-size: 40px 40px;
+  background: linear-gradient(
+    90deg,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  width: 4000px;
+  height: 300vh;
+  will-change: transform;
+}
+
+#svg {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 200vw;
+  height: 3000px;
+
+  pointer-events: none;
+}
+
+#path {
+  fill: none;
+  z-index: 99999;
+  stroke-width: 4.4;
+  stroke: rgba(255, 255, 255, 0.5);
+}
+.section {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  color: white;
+  font-size: 5em;
+}
+.one {
+  background-color: rgba(0, 255, 0, 0.25);
+  left: 0;
+}
+.two {
+  background-color: rgba(0, 0, 255, 0.25);
+  left: 100vw;
+}
+.three {
+  background-color: rgba(255, 50, 50, 0.25);
+  left: 200vw;
+}
+.four {
+  background-color: rgba(255, 255, 0, 0.25);
+  left: 300vw;
+}
+.five {
+  background-color: rgba(0, 150, 255, 0.25);
+  left: 400vw;
+}
+.f5 {
+  color: #ff2d55;
+  margin-top: -1000px;
+}
+.six {
+  background-color: rgba(255, 0, 150, 0.25);
+  left: 500vw;
+}
+.seven {
+  background-color: rgba(50, 150, 0, 0.25);
+  left: 600vw;
+}
+.eight {
+  background-color: rgba(0, 150, 150, 0.25);
+  left: 700vw;
+}
+#tractor {
+  background: #dddddd;
+  width: 0px;
+  min-height: 60px;
+  position: absolute;
+  text-align: center;
+  padding-top: 200px;
+  top: 120px;
+  z-index: 999;
+  transform: scale(0.5);
+  filter: drop-shadow(8px 8px 6px rgba(0, 0, 0, 0.75));
+}
+
+#tractor .exhaust {
+  width: 18px;
+  height: 61px;
+  background: #000000;
+  position: absolute;
+  top: -60px;
+  right: 20px;
+  background-image: linear-gradient(
+    to right,
+    transparent 4px,
+    rgba(255, 255, 255, 0.5) 11px,
+    transparent 14px
+  );
+}
+
+#tractor .ventilation {
+  width: 100%;
+  height: 45px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  background-image: linear-gradient(
+    to right,
+    transparent 210px,
+    rgba(0, 0, 0, 0.3) 225px,
+    transparent 230px,
+    transparent 235px,
+    rgba(0, 0, 0, 0.3) 250px,
+    transparent 20px
+  );
+  box-shadow: 15px 0 0 #000000;
+}
+
+#tractor .body {
+  position: relative;
+  width: 430px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 0 5px 5px 0;
+  background: #2f783c;
+  background-image: linear-gradient(
+      to bottom,
+      transparent 30px,
+      rgba(255, 255, 255, 0.1) 30px,
+      rgba(46, 118, 58, 0.9) 200px,
+      transparent 200px
+    ),
+    linear-gradient(
+      to right,
+      transparent 46px,
+      rgba(0, 0, 0, 0.3) 48px,
+      transparent 48px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 12px,
+      rgba(255, 255, 255, 0.2) 17px,
+      rgba(255, 255, 255, 0.2) 19px,
+      rgba(255, 255, 255, 0) 24px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(242, 192, 18, 0) 28px,
+      rgba(242, 192, 18, 0.7) 28px,
+      rgba(242, 192, 18, 0.7) 31px,
+      transparent 36px
+    );
+
+  overflow: visible;
+  box-shadow: 0 20px 0 #245c2e, 0 18px 8px -3px rgba(0, 0, 0, 0.3);
+  border-right: #000 solid 10px;
+}
+
+#tractor .window {
+  position: absolute;
+  top: -110px;
+  width: 180px;
+  height: 220px;
+  margin: 0 auto;
+  border-radius: 15px 15px 6px 0;
+  background: #2f783c;
+  background-image: linear-gradient(
+      to right,
+      #2f783c 11px,
+      #205429 15px,
+      #205429 17px,
+      #136021 17px,
+      #136021 20px,
+      #205429 20px,
+      #205429 22px,
+      #245c2e 22px,
+      #245c2e 32px,
+      transparent 32px,
+      transparent 83px,
+      transparent 90px
+    ),
+    linear-gradient(
+      to left,
+      #2f783c 11px,
+      #205429 15px,
+      #205429 17px,
+      #136021 17px,
+      #136021 20px,
+      #205429 20px,
+      #205429 22px,
+      #245c2e 22px,
+      #245c2e 32px,
+      transparent 32px,
+      transparent 75px,
+      transparent 95px
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 114px,
+      #2f783c 114px,
+      #2f783c 118px,
+      transparent 118px
+    ),
+    /*Window*/
+      linear-gradient(
+        to bottom,
+        transparent 25px,
+        rgba(255, 255, 255, 0.4) 25px,
+        rgba(255, 255, 255, 0.9) 180px,
+        transparent 180px
+      );
+
+  box-shadow: 0 20px 0 #245c2e, 0 18px 8px 1px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+}
+
+#tractor .wheel {
+  background: #000;
+  display: block;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 35px;
+  left: -90px;
+  animation: rotating 2s linear infinite;
+  background-image: linear-gradient(
+      to right,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(76deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -76deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(60deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -60deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(42deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -42deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(
+      -24deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(25deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(-9deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(7deg, transparent 44%, #000 44%, #111 55%, transparent 55%);
+}
+
+#tractor .wheel-inner {
+  background: none;
+  display: block;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 35px;
+  left: -90px;
+  background-image:  /*big yellow circle*/ radial-gradient(
+      circle at 100px 100px,
+      #f3c114 18%,
+      rgba(255, 255, 255, 0.1) 28%
+    ),
+    /*shadow between yellow circles */
+      radial-gradient(circle at 120px 100px, #000 -90%, rgba(0, 0, 0, 0.1) 50%),
+    /*small yellow circle*/
+      radial-gradient(
+        circle at 100px 100px,
+        #f3c114 48%,
+        rgba(0, 0, 0, 0.1) 50%
+      );
+
+  box-shadow: inset 0px 11px 6px rgba(255, 255, 255, 0.3),
+    10px -12px 12px 5px rgba(0, 0, 0, 0.3),
+    17px -20px 1px 5px rgba(47, 120, 60, 1);
+}
+
+#tractor .wheel-small {
+  background: #000;
+  display: block;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  top: 85px;
+  left: 285px;
+  animation: rotating 1s linear infinite;
+  background-image: linear-gradient(
+      to right,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(76deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -76deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(60deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -60deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(42deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(
+      -42deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(
+      -24deg,
+      transparent 45%,
+      #000 45%,
+      #111 55%,
+      transparent 55%
+    ),
+    linear-gradient(25deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(-9deg, transparent 45%, #000 45%, #111 55%, transparent 55%),
+    linear-gradient(7deg, transparent 44%, #000 44%, #111 55%, transparent 55%);
+
+  -animation: rotating 2s linear infinite;
+}
+#tractor .wheel-small-inner {
+  background: none;
+  display: block;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  top: 85px;
+  left: 285px;
+  background-image: radial-gradient(
+      circle at 65px 65px,
+      #f3c114 18%,
+      rgba(255, 255, 255, 0.1) 28%
+    ),
+    radial-gradient(circle at 80px 80px, #000 -90%, rgba(0, 0, 0, 0.1) 50%),
+    radial-gradient(circle at 65px 65px, #f3c114 48%, rgba(0, 0, 0, 0.1) 50%);
+
+  box-shadow: inset 0px 11px 6px rgba(255, 255, 255, 0.3),
+    -13px -10px 7px -3px rgba(0, 0, 0, 0.3),
+    -16px -20px 1px -1px rgba(47, 120, 60, 1);
+}
+
+@keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.features {
+  position: fixed;
+  transform: scale(1.2);
+  top: 100px;
+  z-index: 999;
+}
+.features div {
+  opacity: 0;
+  margin: 0 20%;
+  z-index: 9999;
+  transition: all 1s ease-in-out;
+}
+#path {
+  transform: rotateY(-51deg);
+}
+
+#hbt {
+  position: fixed;
+  top: 80px;
+  left: 40%;
+  z-index: 9999;
+}
+.f4{
+  position: absolute;
+ top:10px;
+}

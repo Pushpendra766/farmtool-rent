@@ -1,0 +1,38 @@
+{
+  "name": "farm-rent",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.11",
+    "firebase": "^9.17.2",
+    "framer-motion": "^9.0.7",
+    "gsap": "^3.11.4",
+    "lottie-react": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-intersection-observer": "^9.4.2",
+    "react-router": "^6.8.1",
+    "react-router-dom": "^6.8.1",
+    "react-simple-typewriter": "^5.0.1",
+    "swiper": "^6.8.4",
+    "tailwind-scrollbar-hide": "^1.1.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "sass": "^1.58.3",
+    "tailwindcss": "^3.2.6",
+    "vite": "^4.1.0"
+  }
+}

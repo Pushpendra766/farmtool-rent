@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+ 
+ .card {
+   @apply w-full h-[330px] bg-gradient-to-b from-[#83EAF1] to-[#ffffff] text-base transition-all duration-[0.3s] ease-[ease] relative flex justify-center items-center flex-col cursor-pointer transition-all duration-[0.3s] ease-[ease]  my-3 rounded-[25px] shadow-lg  hover:h-[330px];
+   
+   overflow: hidden;
+  }
+ 
+ .card .title {
+   @apply w-full text-center text-[black] font-semibold uppercase tracking-[4px] mt-[30px] m-0;
+ }
+ .card .text {
+   @apply w-4/5 text-[13px] text-center text-[blue] font-extralight tracking-[2px] opacity-0 max-h-0 transition-all duration-[0.3s] ease-[ease] mt-5 mx-auto my-0;
+ }
+ 
+ .card:hover .text {
+   @apply transition-all duration-[0.3s] ease-[ease] opacity-100 max-h-10;
+ }
+ .card img{
+  margin-top:-30px;
+ height: 200px;
+ width: auto;
+ min-width: 270px;
+ border-radius: 15px;
+}
+}

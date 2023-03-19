@@ -1,0 +1,3 @@
+.btn-primary {
+  @apply text-2xl text-[#ffffff] rounded-full px-6 py-2 bg-secondary hover:bg-primary font-bold cursor-pointer;
+}
