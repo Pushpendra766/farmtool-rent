@@ -45,9 +45,10 @@ const Faq = () => {
     },
   ];
   const [currentFaq, setCurrentFaq] = useState(null);
+
   return (
-    <div className="mobile:my-8 md:my-0 py-10">
-      <p className="font-bold text-3xl text-center pb-8">FAQs</p>
+    <div className="md:py-5 mobile:py-4">
+      <p className="font-bold text-3xl text-center md:pb-2 mobile:pb-1">FAQs</p>
       {faqs.map((faq, index) => {
         return (
           <Component
@@ -76,7 +77,7 @@ const Component = ({ faq, currentFaq, setCurrentFaq, idx }) => {
     }
   }, [opened]);
   return (
-    <div className="my-3 border-0 md:w-8/12 lg:w-6/12 w-9/12 mx-auto border-gray bg-gradient-to-r from-[#AFF1DA] to-[#F9EA8F] rounded-md cursor-pointer">
+    <div className="my-3 border-0 mobile:w-11/12 md:w-8/12 lg:w-6/12 w-9/12 mx-auto border-gray bg-gradient-to-r from-[#AFF1DA] to-[#F9EA8F] rounded-md cursor-pointer">
       <div
         onClick={() => {
           if (currentFaq === idx) {

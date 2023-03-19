@@ -3,9 +3,11 @@ import Language from "../../SubComponents/Language/Language";
 import SearchBar from "../../SubComponents/SearchBar/SearchBar";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const Navbar = ({logstatus,handleAuthentication}) => {
   const history = useNavigate();
+  const { t } = useTranslation();
   const [home, setHome] = useState(1);
   return (
     <div

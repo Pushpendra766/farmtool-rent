@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
-const Category = ({ mobile }) => {
+const Category = ({ mobile, data }) => {
   const location = useLocation();
   const ref = useRef();
 
@@ -21,31 +21,25 @@ const Category = ({ mobile }) => {
       ref={ref}
       style={
         mobile === true && innerWidth < 700
-          ? { width: "31%", margin: " 0 0.35rem" }
+          ? { width: "47%", margin: " 0 0.35rem" }
           : {}
       }
-      className="items-center flex flex-col self-center w-2/12 md:my-2 mobile:my-1 rounded-md border-1 py-2 border-lightest-grey md:mx-2 cursor-pointer transition-all hover:scale-105 shrink-0 mobile:mx-auto"
+      className="items-center flex flex-col self-center w-1/5 md:my-2 mobile:my-8 rounded-md border-1 
+      py-2 border-lightest-grey md:mx-2 cursor-pointer transition-all hover:scale-105 shrink-0 mobile:mx-auto px-2"
     >
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8xB9u3Fg0HvPxY23zCzu0P5dL_g-DUtxeA&usqp=CAU"
+        src={data?.url}
         alt=""
-        className="mobile:w-full"
+        className="mobile:w-full object-cover object-center h-44 rounded-md"
       />
       <div className="flex flex-col items-center">
-        <h3 className="text-xl">Tractor</h3>
+        <h3 className="md:text-xl mobile:text-[22px]">{data?.name}</h3>
         <p className="text-sm text-dark-green">
-          Rs. 499 <span className="line-through text-orange">899</span>
+          Rs. {data?.price}{" "}
+          <span className="line-through text-orange">{data.price * 1.25}</span>
         </p>
         <p className="text-sm text-center px-2">
-          {mobile === true && innerWidth < 700
-            ? "A tractor is a vehicle that's used on a farm or work site, often to pull a trailer or other equipment.".slice(
-                0,
-                25
-              ) + "..."
-            : "A tractor is a vehicle that's used on a farm or work site, often to pull a trailer or other equipment.".slice(
-                0,
-                50
-              ) + "..."}
+          {data?.description.slice(0, 75) + "..."}
         </p>
       </div>
     </div>

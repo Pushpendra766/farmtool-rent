@@ -18,6 +18,7 @@ import LoadingAnimation from "./Components/LoadingAnimation/LoadingAnimation";
 import ChatbotButton from "./Components/ChatBot/ChatBot";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
+import CategorySection from "./Components/CategorySection/CategorySection";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,9 +58,11 @@ function App() {
                 ) : (
                   <>
                     <Intro />
-                    <Trending />
+                    {/* <Trending /> */}
                     <HowItWorks />
                     <Testimonials />
+                    {/* <CategoryScreen /> */}
+                    <CategorySection />
                     <Faq />
                     <Footer />
                     <ChatbotButton />
@@ -94,6 +97,16 @@ function App() {
               <>
 
                 <Signup handleAuthentication={handleAuthentication} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/Category/:name"
+            element={
+              <>
+                <Navbar />
+                <CategoryScreen />
                 <Footer />
               </>
             }
