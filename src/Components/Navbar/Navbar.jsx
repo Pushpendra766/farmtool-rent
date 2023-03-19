@@ -4,7 +4,7 @@ import SearchBar from "../../SubComponents/SearchBar/SearchBar";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 
-const Navbar = () => {
+const Navbar = ({logstatus,handleAuthentication}) => {
   const history = useNavigate();
   const [home, setHome] = useState(1);
   return (
@@ -26,10 +26,18 @@ const Navbar = () => {
         </div>
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
+         {logstatus?(
+                   <span className="flex flex-row gap-4 hidden md:flex">
+                   <button onClick={() => history("/profile")}>Profile</button>
+                   <button onClick={() => handleAuthentication(false)}>Logout</button>
+                   </span>
+         ):(
         <span className="flex flex-row gap-4 hidden md:flex">
           <button onClick={() => history("/login")}>Login</button>
           <button onClick={() => history("/signup")}>Signup</button>
-        </span>
+        </span>)}
+
+
       </div>
       <div className="pb-2 mx-4">
         <SearchBar additionalClass="md:hidden" />

@@ -21,18 +21,32 @@ import Signup from "./Components/Signup/Signup";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+  const handleAuthentication = (status) => {
+    if (status == false) {
+      localStorage.clear();
+      localStorage.removeItem("RLog")
+      localStorage.removeItem("RName")
+    }
 
+    setAuthenticated(status);
+  }
   useEffect(() => {
     // Simulate loading delay
     setTimeout(() => {
       setIsLoading(false);
       setBgColor("bg-[#ffffff]");
     }, 3000);
+    let val = localStorage.getItem("RLog")
+    if (val == "yes")
+      setAuthenticated(val);
   }, []);
   const [bgColor, setBgColor] = useState("bg-[#ffffff]");
   return (
     <div className={`App ${bgColor}`}>
       <>
+        {!isLoading &&
+          <Navbar logstatus={authenticated} handleAuthentication={handleAuthentication} />}
         <Routes>
           <Route
             path="/"
@@ -42,7 +56,6 @@ function App() {
                   <LoadingAnimation setBgColor={setBgColor} />
                 ) : (
                   <>
-                    <Navbar />
                     <Intro />
                     <Trending />
                     <HowItWorks />
@@ -59,7 +72,6 @@ function App() {
             path="/features"
             element={
               <>
-                <Navbar />
                 <Features />
                 <Footer />
                 <ChatbotButton />
@@ -70,8 +82,8 @@ function App() {
             path="/login"
             element={
               <>
-                <Navbar />
-                <Login />
+
+                <Login handleAuthentication={handleAuthentication} />
                 <Footer />
               </>
             }
@@ -80,8 +92,8 @@ function App() {
             path="/signup"
             element={
               <>
-                <Navbar />
-                <Signup />
+
+                <Signup handleAuthentication={handleAuthentication} />
                 <Footer />
               </>
             }
