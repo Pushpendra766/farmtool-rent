@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const history = useNavigate();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [home, setHome] = useState(1);
   return (
     <div
@@ -29,8 +29,18 @@ const Navbar = () => {
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
         <span className="flex flex-row gap-4 hidden md:flex whitespace-nowrap">
-          <button onClick={() => history("/login")}>{t("login")}</button>
-          <button onClick={() => history("/signup")}>{t("signup")}</button>
+          <button
+            className="pt-1.5 transition-all"
+            onClick={() => history("/login")}
+          >
+            {t("login")}
+          </button>
+          <button
+            className="pt-1.5 transition-all"
+            onClick={() => history("/signup")}
+          >
+            {t("signup")}
+          </button>
         </span>
       </div>
       <div className="pb-2 mx-4">

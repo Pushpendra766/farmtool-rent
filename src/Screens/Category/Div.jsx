@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
-const Div = () => {
+const Div = ({ data }) => {
   const location = useLocation();
   const ref = useRef();
 
@@ -21,18 +21,18 @@ const Div = () => {
        border-lightest-grey md:mx-2 px-2 cursor-pointer transition-all hover:scale-105 shrink-0 mobile:mx-auto"
     >
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8xB9u3Fg0HvPxY23zCzu0P5dL_g-DUtxeA&usqp=CAU"
+        src={data?.url}
         alt=""
-        className="mobile:w-full md:w-10/12"
+        className="object-cover object-center h-60 rounded-md mt-2"
       />
       <div className="flex flex-col items-center">
         <h3 className="md:text-xl mobile:text-[28px]">Tractor</h3>
         <p className="md:text-sm mobile:text-lg text-dark-green">
-          Rs. 499 <span className="line-through text-orange">899</span>
+          Rs. {data?.price}{" "}
+          <span className="line-through text-orange">{data?.price * 1.25}</span>
         </p>
         <p className="mobile:text-base md:text-sm text-center px-2">
-          A tractor is a vehicle that's used on a farm or work site, often to
-          pull a trailer or other equipment...
+          {data?.description.slice(0, 100) + "..."}
         </p>
       </div>
     </div>
