@@ -56,7 +56,11 @@ const Product = () => {
               {product?.price * 1.25}
             </span>
           </p>
+<<<<<<< HEAD
+          <div className="flex gap-6 text-lg">
+=======
           <div className="flex gap-6 text-base whitespace-nowrap md:text-lg">
+>>>>>>> d9ec5361de6dcae6126de90f59de1606c41a9a44
             <button className="py-2 px-4">Rent</button>
             <button>Add to Rentlist</button>
           </div>
