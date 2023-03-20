@@ -115,8 +115,7 @@ function App() {
                   <>
                   <Intro />
                     {/* <Trending /> */}
-                    <Testimonials />
-                    {listOfTools.map((e,id) => {
+                    {listOfTools.map((e) => {
                       return (
                         <CategorySection
                         key={id}
@@ -126,6 +125,7 @@ function App() {
                         />
                       );
                     })}
+                    <Testimonials />
                     <Faq />
                     <Footer />
                     <ChatbotButton />
