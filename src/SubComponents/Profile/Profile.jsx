@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 const Profile = ({ about }) => {
-  const history  = useNavigate();
+  const history = useNavigate();
   useEffect(() => {
     //   async function ofetch() {
     //     db.ref("users/").on("child_added", function (snapshot) {
@@ -35,7 +35,13 @@ const Profile = ({ about }) => {
               </div>{" "}
               <div>
                 {" "}
-                <button class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    history("/profile/lendland");
+                  }}
+                  class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
+                >
                   {" "}
                   Lend Land
                 </button>
