@@ -116,7 +116,6 @@ function App() {
                   <>
                     <Intro />
                     {/* <Trending /> */}
-                    <Testimonials />
                     {listOfTools.map((e) => {
                       return (
                         <CategorySection
@@ -126,6 +125,7 @@ function App() {
                         />
                       );
                     })}
+                    <Testimonials />
                     <Faq />
                     <Footer />
                     <ChatbotButton />
