@@ -68,7 +68,7 @@ const Testimonials = () => {
   }, [i18next.language]);
 
   return (
-    <div className="bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">
+    <div className="bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4 hidden md:flex">
       <p className="text-center text-3xl font-bold md:pb-8 mobile:pb-4">
         {t("testimonial")}
       </p>

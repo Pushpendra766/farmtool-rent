@@ -52,7 +52,7 @@ const LandMap = () => {
   ];
   const [currentLand, setCurrentLand] = useState(landData[0]);
   return (
-    <div className="py-10 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6]">
+    <div className="py-10 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] hidden md:flex flex-col">
       <p className="text-center text-3xl font-bold md:pb-8 mobile:pb-4">
         {t("land_on_lease")}
       </p>
