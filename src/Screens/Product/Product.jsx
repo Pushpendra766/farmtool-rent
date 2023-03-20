@@ -37,7 +37,10 @@ const Product = () => {
       <div className="flex flex-row border rounded-md p-6">
         <div className="flex flex-col w-1/2">
           <div className="flex flex-row gap-6">
-            <img src={product?.url} />
+            <img
+              src={product?.url}
+              className="w-full h-full object-cover object-center mr-4 rounded-xl"
+            />
           </div>
         </div>
         <div className="flex flex-col gap-4 w-1/2">
@@ -47,7 +50,12 @@ const Product = () => {
             <AiFillStar className="mt-1" />
           </span>
           <p className="text-base">{product?.description}</p>
-          <p className="text-lg font-bold">{product?.price}</p>
+          <p className="text-lg font-bold">
+            Rs. {product?.price}{" "}
+            <span className="line-through text-gray-dark">
+              {product?.price * 1.25}
+            </span>
+          </p>
           <div className="flex gap-6 text-lg">
             <button className="py-2 px-4">Rent</button>
             <button>Add to Rentlist</button>

@@ -23,6 +23,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import Product from "./Screens/Product/Product";
+import Cart from "../src/Screens/Cart/Cart";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -193,6 +194,16 @@ function App() {
               <>
                 <Navbar />
                 <HowItWorks />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <>
+                <Navbar />
+                <Cart />
                 <Footer />
               </>
             }
