@@ -27,7 +27,7 @@ const SearchBar = ({ additionalClass }) => {
       </span>
       {contextApi.search || contextApi.search.length > 0 ? (
         <div>
-          <div className="w-6/12 top-12 left-60 absolute bg-white border-dark-green rounded-md grid grid-cols-4 p-3">
+          <div className="w-6/12 overflow-auto h-[90vh] top-12 left-[50%] transform translate-x-[-50%] absolute bg-white border-dark-green rounded-md grid grid-cols-4 p-3">
             {contextApi.search || contextApi.search.length > 0
               ? data
                   .filter((e) => {

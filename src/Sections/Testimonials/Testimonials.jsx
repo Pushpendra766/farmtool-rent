@@ -64,7 +64,7 @@ const Testimonials = () => {
     }else{
       setReviews(reviewsHindi);
     }
-  });
+  },[]);
   
   return (
     <div className="md:my-4 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">
@@ -72,8 +72,8 @@ const Testimonials = () => {
         {t("testimonial")}
       </p>
       <div className="md:flex mx-auto md:mt-14 mobile:my-0 w-10/12 items-center justify-evenly">
-        {reviews.map((review) => {
-          return <Component review={review} />;
+        {reviews.map((review, id) => {
+          return <Component key={id} review={review} />;
         })}
       </div>
     </div>

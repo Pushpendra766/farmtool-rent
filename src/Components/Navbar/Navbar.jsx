@@ -36,7 +36,7 @@ const Navbar = ({logstatus,handleAuthentication}) => {
          {logstatus?(
                    <span className="flex flex-row gap-4 hidden md:flex">
                    <CgProfile size={30} style={{transform:"translateY(5px)"}} onClick={() => history("/profile")}/>
-                   <button onClick={() => handleAuthentication(false)}>Logout</button>
+                   <button className="w-[106px]" onClick={() => handleAuthentication(false)}>{t("logout")}</button>
                    </span>
          ):(
         <span className="flex flex-row gap-4 hidden  md:flex">
