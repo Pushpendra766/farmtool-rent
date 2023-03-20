@@ -64,7 +64,7 @@ const Testimonials = () => {
     }else{
       setReviews(reviewsHindi);
     }
-  });
+  }, []);
   
   return (
     <div className="md:my-4 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">

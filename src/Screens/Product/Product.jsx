@@ -33,9 +33,9 @@ const Product = () => {
   }, [params.name]);
 
   return (
-    <div className="w-9/12 mx-auto py-20">
-      <div className="flex flex-row border rounded-md p-6">
-        <div className="flex flex-col w-1/2">
+    <div className="md:w-9/12 mx-auto py-20">
+      <div className="md:flex md:border rounded-md p-6">
+        <div className="flex flex-col md:w-1/2">
           <div className="flex flex-row gap-6">
             <img
               src={product?.url}
@@ -43,13 +43,14 @@ const Product = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-4 w-1/2">
+        <div className="flex flex-col gap-4 md:w-1/2">
           <p className="text-xl font-semibold">{product?.name}</p>
           <span className="flex bg-[#fcf403] w-min px-2 rounded-md">
             {Math.floor(Math.random() * (5 - 2 + 1)) + 2}{" "}
             <AiFillStar className="mt-1" />
           </span>
           <p className="text-base">{product?.description}</p>
+<<<<<<< HEAD
           <p className="text-lg font-bold">
             Rs. {product?.price}{" "}
             <span className="line-through text-gray-dark">
@@ -57,6 +58,10 @@ const Product = () => {
             </span>
           </p>
           <div className="flex gap-6 text-lg">
+=======
+          <p className="text-lg font-bold">₹ {product?.price}</p>
+          <div className="flex gap-6 text-base whitespace-nowrap md:text-lg">
+>>>>>>> 5b5f1d516527922935ee5dadf56c4e7a2766d852
             <button className="py-2 px-4">Rent</button>
             <button>Add to Rentlist</button>
           </div>
