@@ -30,6 +30,7 @@ import FirebaseData from "./FirebaseData/FirebaseData";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const [about, setAbout]=useState({})
   const navigate = useNavigate();
   const handleAuthentication = (status) => {
     if (status == false) {
@@ -44,11 +45,17 @@ function App() {
     }
   };
   useEffect(() => {
+   // console.log(about)
     // Simulate loading delay
     let val = localStorage.getItem("RLog");
+    let username=localStorage.getItem("RName")
+    let useremail=localStorage.getItem("email")
+    
     if (val == "yes") {
       setIsLoading(false);
       setAuthenticated(true);
+      setAbout({ "name":username,
+      "email":useremail})
     } else if (!authenticated) {
       toast.info("New user? Sign Up then!");
     }
@@ -157,7 +164,7 @@ function App() {
               !isLoading && (
                 <>
                   {" "}
-                  <Login handleAuthentication={handleAuthentication} />
+                  <Login handleAuthentication={handleAuthentication} setAbout={setAbout} />
                   <Footer />{" "}
                 </>
               )
@@ -168,7 +175,7 @@ function App() {
             element={
               !isLoading && (
                 <>
-                  <Signup handleAuthentication={handleAuthentication} />
+                  <Signup handleAuthentication={handleAuthentication} setAbout={setAbout}/>
                   <Footer />
                 </>
               )
@@ -178,7 +185,7 @@ function App() {
             path="/Category/:name"
             element={
               <>
-                <Navbar />
+               
                 <CategoryScreen />
                 <Footer />
               </>
@@ -188,7 +195,7 @@ function App() {
             path="/Category/:name"
             element={
               <>
-                <Navbar />
+               
                 <CategoryScreen />
                 <Footer />
               </>
@@ -198,7 +205,7 @@ function App() {
             path="/howitworks"
             element={
               <>
-                <Navbar />
+                
                 <HowItWorks />
                 <Footer />
               </>
@@ -208,7 +215,7 @@ function App() {
             path="/cart"
             element={
               <>
-                <Navbar />
+                
                 <Cart />
                 <Footer />
               </>
@@ -218,7 +225,7 @@ function App() {
             path="/product/:name"
             element={
               <>
-                <Navbar />
+               
                 <Product />
                 <Footer />
               </>
@@ -228,7 +235,7 @@ function App() {
             path="/profile"
             element={
               <>
-                <Profile />
+                <Profile about={about}/>
                 <Footer />
               </>
             }

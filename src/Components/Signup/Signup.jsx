@@ -34,14 +34,19 @@ const Signup = ({handleAuthentication}) => {
           })
           localStorage.setItem("RLog", "yes");
           localStorage.setItem("RName", name);
+          localStorage.setItem("email", email);
           localStorage.setItem("signed",true);
       setEmail("");
       setPassword("");
       setName("");
-      console.log("Email : ", email);
-      console.log("Password : ", password);
-      console.log("Confirm Password : ", confirmPassword);
+      // console.log("Email : ", email);
+      // console.log("Password : ", password);
+      // console.log("Confirm Password : ", confirmPassword);
       handleAuthentication(true);
+      setAbout({
+        "name":name,
+         "email":new_email
+       })
      // toast.success("Sign Up is successfull")
      // navigate("/")
       return
