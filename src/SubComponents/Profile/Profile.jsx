@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
-const Profile = ({ about }) => {
-  const history  = useNavigate();
-  useEffect(() => {
-    //   async function ofetch() {
-    //     db.ref("users/").on("child_added", function (snapshot) {
-    //       const messages = snapshot.val();
-    //       // console.log(messages)
-    //       setnewData((data) => [...data, messages]);
-    //     });
-    //   }
-    //  // ofetch();
-    //  console.log(about)
-  }, []);
+import Category from "../../Components/Category/Category";
+const Profile = ({about}) => {
+  const [data,setnewData]=useState([])
+ const history  = useNavigate();
+  useEffect(()=>{
+    //alert(about.email)
+    async function ofetch() {
+      if(about.email!=="undefined"){
+      let new_email=about.email.split('@')[0]
+      db.ref("users/"+new_email+"/tools/").on("child_added", function (snapshot) {
+        const messages = snapshot.val();
+        //console.log(messages)
+        setnewData((data) => [...data, messages]);
+      });
+    }
+  }
+    ofetch();
+   //alert(data)
+  },[about])
+
   return (
     <>
-      <div class="py-16">
-        <div class="p-8 bg-white shadow mt-24">
+      <div className="py-16">
+        <div className="p-8 bg-white shadow shadow-xl mt-24">
           {" "}
-          <div class="grid grid-cols-1 md:grid-cols-3">
-            <div class="grid grid-cols-3 my-3 sm:grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="grid grid-cols-3 my-3 sm:grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
               <div>
                 <button
                   onClick={(e) => {
@@ -46,22 +53,23 @@ const Profile = ({ about }) => {
                   {" "}
                   Settings
                 </button>
+
               </div>{" "}
             </div>{" "}
-            <div class="relative">
+            <div className="relative">
               {" "}
-              <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+              <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-24 w-24"
+                  className="h-24 w-24"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   {" "}
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </div>{" "}
@@ -75,8 +83,9 @@ const Profile = ({ about }) => {
               </button>{" "}
             </div>{" "}
           </div>{" "}
-          <div class="mt-20 text-center border-b pb-12">
+          <div className="mt-20 text-center border-b pb-12">
             {" "}
+
             <h1 class="text-4xl font-small text-gray-700">
               {about.name}, <span class="font-light text-gray-500">27</span>
             </h1>{" "}
@@ -85,6 +94,7 @@ const Profile = ({ about }) => {
               Your Equipments
             </p>
           </div>{" "}
+
         </div>
       </div>
     </>
