@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const Category = ({ mobile, data }) => {
   const location = useLocation();
   const ref = useRef();
+  const history = useNavigate();
 
   useEffect(() => {
     if (location.pathname.includes("Category")) {
@@ -24,6 +25,9 @@ const Category = ({ mobile, data }) => {
           ? { width: "47%", margin: " 0 0.35rem" }
           : {}
       }
+      onClick={(e) => {
+        history(`/product/${data.name}`);
+      }}
       className="items-center flex flex-col self-center w-1/5 md:my-2 mobile:my-8 rounded-md border-1 
       py-2 border-lightest-grey md:mx-2 cursor-pointer transition-all hover:scale-105 shrink-0 mobile:mx-auto px-2"
     >

@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const Div = ({ data }) => {
   const location = useLocation();
   const ref = useRef();
+  const history = useNavigate();
 
   useEffect(() => {
     if (location.pathname.includes("Category")) {
@@ -17,6 +18,9 @@ const Div = ({ data }) => {
   return (
     <div
       ref={ref}
+      onClick={(e) => {
+        history(`/product/${data.name}`);
+      }}
       className="items-center flex flex-col self-center w-11/12 my-2 rounded-md border-1 pb-3
        border-lightest-grey md:mx-2 px-2 cursor-pointer transition-all hover:scale-105 shrink-0 mobile:mx-auto"
     >
