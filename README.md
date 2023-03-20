@@ -1,15 +1,17 @@
-# What is Farm Rent ?
+## What is Farm Rent ?
 
-Farm Rent is a web application for a farming tools rental service built using ReactJS and Tailwind CSS.
+Farm Rent is a web application for farming tools rental and for land on lease service. It is built using ReactJS, Tailwind CSS and Firebase for database.
 
-You can see the live preview [here](https://farmrent.netlify.app/)
+You can see the live preview [here](https://toolrent.netlify.app/)
 
-# Want to contribute or access it on your localhost
-1. Fork the repository
-2. Create a new branch for your changes
-3. Make your changes and commit them
-4. Push your changes to your fork
-5. Create a pull request
-6. If the changes will be good enough to be included, the PR will be merged.
+## Local environment setup 
+1. Clone the repo.
+2. Go to the folder `cd farmtool-rent`.
+3. Run `npm install`
+4. Create a `.env` file in root of directory. 
+7. Setup firebase and get your own set of keys.
+8. Copy all the key fields from `.env.sample` and place your own set of values there.
+9. Run `npm run dev`.
+10. Visit  [http://127.0.0.1:5173/](http://127.0.0.1:5173/)  in your preferred browser.
 
 ### Show ❤️ by a 🌟 to this repository.
