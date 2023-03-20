@@ -245,6 +245,24 @@ function App() {
               </>
             }
           />
+           <Route
+            path="/profile/landTools"
+            element={
+              <>
+                <LandTools/>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/profile/lendland"
+            element={
+              <>
+                <LandLend/>
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </>
     </div>
