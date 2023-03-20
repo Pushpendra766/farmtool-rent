@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import i18next from "../../i18n";
 
 const Testimonials = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [reviews, setReviews] = useState([]);
+
   const reviewsEnglish = [
     {
       image: "farmeri1.png",
@@ -31,7 +32,6 @@ const Testimonials = () => {
       rating: 4.5,
     },
   ];
-
   const reviewsHindi = [
     {
       image: "farmeri1.png",
@@ -58,20 +58,21 @@ const Testimonials = () => {
       rating: 4.5,
     },
   ];
-  useEffect(()=>{
-    if(i18next.language == "en"){
+
+  useEffect(() => {
+    if (i18next.language == "en") {
       setReviews(reviewsEnglish);
-    }else{
+    } else {
       setReviews(reviewsHindi);
     }
   }, [i18next.language]);
-  
+
   return (
     <div className="md:my-4 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">
       <p className="text-center text-3xl font-bold md:pb-8 mobile:pb-4">
         {t("testimonial")}
       </p>
-      <div className="md:flex mx-auto md:mt-14 mobile:my-0 w-10/12 items-center justify-evenly">
+      <div className="flex mobile:overflow-scroll md:overflow-visible mobile:flex-row md:flex-row mx-auto md:mt-14 mobile:my-0 w-10/12 items-center justify-evenly">
         {reviews.map((review, id) => {
           return <Component key={id} review={review} />;
         })}
@@ -85,11 +86,10 @@ const Component = ({ review }) => {
   return (
     <div
       ref={boxRef}
-      className="mx-4 rounded-xl px-3 py-2 mobile:my-24 md:my-0"
-      style={{ backgroundColor: "#ffffff" }}
+      className="mx-4 rounded-xl px-3 py-2 mobile:my-24 md:my-0 bg-white"
     >
       <img
-        className="rounded-full mx-auto w-8/12 -mt-20"
+        className="rounded-full mx-auto mobile:w-full md:w-8/12 -mt-20"
         src={`/images/${review.image}`}
         alt=""
       />
