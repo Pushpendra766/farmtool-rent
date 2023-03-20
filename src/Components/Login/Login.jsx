@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import db from "../../firebase";
-// import {
-//   collection,
-//   query,
-//   where,
-//   getDocs,
-//   QuerySnapshot,
-// } from "firebase/firestore";
+import { ToastContainer, toast ,Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router";
 import bcrypt  from "bcryptjs"
-
 const Login = ({handleAuthentication}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -20,7 +14,7 @@ const Login = ({handleAuthentication}) => {
     db.ref("users/" + new_email + "/details").on("value", snapshot => {
 
       if (!snapshot.exists() || !snapshot.val().name || !snapshot.val().password) {
-        alert("Entered email and password are incorrect ")
+        toast("Entered email and password are incorrect ")
       }
      let fireemail = snapshot.val().email
      let fireuser = snapshot.val().name
@@ -29,23 +23,26 @@ const Login = ({handleAuthentication}) => {
       let bpass=bcrypt.compareSync(password, firepass); 
       if (new_email != fireemail ||
         !bpass)
-        alert("Entered username and password are incorrect ")
+       toast.warning("Entered email or password are incorrect ");
       else {
        
         localStorage.setItem("RLog", "yes");
         localStorage.setItem("RName", fireuser);
-       
+        localStorage.setItem("logged", true);
+       // toast.success("Successfully logged in...")
       setEmail("");
       setPassword("");
       handleAuthentication(true);
-      alert("logged in")
+    // 
   };
 })}
   return (
     <div className="pt-32 pb-20 bg-[#feffeb]">
       <div className="py-6 px-10 xl:w-4/12 lg:w-6/12 md:w-7/12 w-10/12 mx-auto border-2 border-[#1a4d2d] rounded-md gap-4 flex flex-col bg-gradient-to-b from-[#AFF1DA] to-[#F9EA8F]">
         <h2 className="text-center text-xl font-semibold">Login</h2>
+       
         <div>
+
           <label>Email : </label>
           <input
             type="email"
@@ -85,6 +82,7 @@ const Login = ({handleAuthentication}) => {
         >
           Create new account
         </button>
+        {handleAuthentication&&<ToastContainer transition={Slide} />}
       </div>
     </div>
   );

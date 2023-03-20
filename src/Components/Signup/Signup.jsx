@@ -3,7 +3,8 @@ import db from "../../firebase";
 //import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
 import bcrypt  from "bcryptjs"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Signup = ({handleAuthentication}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -19,12 +20,13 @@ const Signup = ({handleAuthentication}) => {
         console.log("shivam")
         if (!flag&&snapn.exists()) {
           if(!flag)
-          alert("Username is already exist")
+          toast.warning("Username is already exist")
           return;
         }
         else {
           flag=1;
-          let hpass= bcrypt.hashSync(password, bcrypt.genSaltSync())
+          //let hpass= bcrypt.hashSync(password,8)
+          let hpass=password
           await db.ref("users/"+new_email + "/details/").set({
             "email": new_email,
             "name": name,
@@ -32,7 +34,7 @@ const Signup = ({handleAuthentication}) => {
           })
           localStorage.setItem("RLog", "yes");
           localStorage.setItem("RName", name);
-         
+          localStorage.setItem("signed",true);
       setEmail("");
       setPassword("");
       setName("");
@@ -40,13 +42,15 @@ const Signup = ({handleAuthentication}) => {
       console.log("Password : ", password);
       console.log("Confirm Password : ", confirmPassword);
       handleAuthentication(true);
+     // toast.success("Sign Up is successfull")
+     // navigate("/")
       return
     }
   })
 
     }
     else {
-      alert("Enter valid credentials")
+      toast("Enter valid credentials")
     }
     
 }
@@ -54,7 +58,9 @@ const Signup = ({handleAuthentication}) => {
     <div className="pt-32 pb-20 bg-[#feffeb]">
       <div className="py-6 px-10 xl:w-4/12 lg:w-6/12 md:w-7/12 w-10/12 mx-auto border-2 border-[#1a4d2d] rounded-md gap-4 flex flex-col bg-gradient-to-b from-[#AFF1DA] to-[#F9EA8F]">
         <h2 className="text-center text-xl font-semibold">Signup</h2>
+        {handleAuthentication&&<ToastContainer/>}
         <div>
+          
         <label>Full name : </label>
           <input
             type="text"

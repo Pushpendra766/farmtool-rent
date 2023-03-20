@@ -19,10 +19,13 @@ import ChatbotButton from "./Components/ChatBot/ChatBot";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import CategorySection from "./Components/CategorySection/CategorySection";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const navigate = useNavigate();
   const handleAuthentication = (status) => {
     if (status == false) {
       localStorage.clear();
@@ -31,23 +34,67 @@ function App() {
     }
 
     setAuthenticated(status);
+    if(status){
+    //  setTimeout(()=>{
+     
+      navigate("/")
+    //  },4000)
+   
+    }
+    //
   }
   useEffect(() => {
     // Simulate loading delay
-    setTimeout(() => {
+    let val = localStorage.getItem("RLog")
+    if(val=="yes"){
+      setIsLoading(false);
+      setAuthenticated(true)
+
+    }
+    else if(!authenticated){
+      toast.info("New user? Sign Up then!")
+    }
+    if(isLoading){
+    const myTimeout =setTimeout(() => {
+    
       setIsLoading(false);
       setBgColor("bg-[#ffffff]");
-    }, 3000);
-    let val = localStorage.getItem("RLog")
-    if (val == "yes")
-      setAuthenticated(val);
+    }, 2000);
+   
+   }
+  
+  
   }, []);
+ useEffect(()=>{
+  let val = localStorage.getItem("RLog")
+  let afterlog = localStorage.getItem("logged")
+  let aftersign = localStorage.getItem("signed")
+  if(authenticated&&afterlog){
+    
+    toast.success("Successfully logged in...")
+    localStorage.removeItem("logged")
+    return;
+    }
+    if(authenticated&&aftersign){
+    
+      toast.success("Successfully signed in...")
+      localStorage.removeItem("signed")
+      return;
+      }
+    if(val=="yes"&&authenticated){
+      toast.success("Welcome back...")
+      return;
+    }
+
+ },[authenticated])
+  
   const [bgColor, setBgColor] = useState("bg-[#ffffff]");
   return (
     <div className={`App ${bgColor}`}>
       <>
         {!isLoading &&
           <Navbar logstatus={authenticated} handleAuthentication={handleAuthentication} />}
+           {authenticated&&<ToastContainer/>}
         <Routes>
           <Route
             path="/"
@@ -57,6 +104,7 @@ function App() {
                   <LoadingAnimation setBgColor={setBgColor} />
                 ) : (
                   <>
+                 
                     <Intro />
                     {/* <Trending /> */}
                     <HowItWorks />
@@ -84,21 +132,25 @@ function App() {
           <Route
             path="/login"
             element={
-              <>
-
-                <Login handleAuthentication={handleAuthentication} />
-                <Footer />
-              </>
+             
+                
+                 !isLoading&&( <> <Login handleAuthentication={handleAuthentication} />
+                 <Footer /> </>)
+                
+               
+              
             }
           />
           <Route
             path="/signup"
             element={
+              !isLoading&&(
               <>
 
                 <Signup handleAuthentication={handleAuthentication} />
                 <Footer />
               </>
+              )
             }
           />
           <Route

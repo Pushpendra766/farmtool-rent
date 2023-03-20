@@ -4,7 +4,8 @@ import SearchBar from "../../SubComponents/SearchBar/SearchBar";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-
+import {CgProfile} from "react-icons/cg"
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 const Navbar = ({logstatus,handleAuthentication}) => {
   const history = useNavigate();
   const { t } = useTranslation();
@@ -28,9 +29,10 @@ const Navbar = ({logstatus,handleAuthentication}) => {
         </div>
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
+        < AiOutlineShoppingCart size={35} style={{transform:"translateY(3px)"}} onClick={() => history("/cart")}/>
          {logstatus?(
                    <span className="flex flex-row gap-4 hidden md:flex">
-                   <button onClick={() => history("/profile")}>Profile</button>
+                   <CgProfile size={30} style={{transform:"translateY(5px)"}} onClick={() => history("/profile")}/>
                    <button onClick={() => handleAuthentication(false)}>Logout</button>
                    </span>
          ):(
