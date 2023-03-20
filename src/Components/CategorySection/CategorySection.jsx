@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Category from "../Category/Category";
-import { data } from "../../data";
-
+//import { data } from "../../data";
+import db from "../../firebase";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router";
 
 const CategorySection = ({ name, product, url }) => {
   const userRef = React.useRef(null);
+  const [data,setnewData]=useState([])
   const history = useNavigate();
+  useEffect(()=>{
+        async function ofetch() {
+          db.ref("tools/").on("child_added", function (snapshot) {
+        const messages = snapshot.val();
+       // console.log(messages)
+        setnewData(data => [...data, messages]);
 
+      }
+      )
+    }
+    ofetch();
+  },[])
   return (
     <div className="flex relative align-middle m-2 md:py-1 mobile:pt-1 mobile:pb-2.5 md:pt-0 md:pb-0 rounded-xl border-lightest-grey border-1 shadow-xl my-6 sm:flex-col mobile:flex-col md:flex-row">
       <div
@@ -52,19 +64,19 @@ const CategorySection = ({ name, product, url }) => {
         {product === "smallTools"
           ? data
               .filter((e) => e.type === product)
-              .map((e) => {
-                return <Category mobile={true} data={e} />;
+              .map((e,id) => {
+                return <Category key={id} mobile={true} data={e} />;
               })
           : product === "largeTools"
           ? data
               .filter((e) => e.type === product)
-              .map((e) => {
-                return <Category mobile={true} data={e} />;
+              .map((e,id) => {
+                return <Category key={id} mobile={true} data={e} />;
               })
           : data
               .filter((e) => e.type === product)
-              .map((e) => {
-                return <Category mobile={true} data={e} />;
+              .map((e,id) => {
+                return <Category key={id} mobile={true} data={e} />;
               })}
       </div>
       <div
