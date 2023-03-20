@@ -4,8 +4,9 @@ import SearchBar from "../../SubComponents/SearchBar/SearchBar";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-
-const Navbar = () => {
+import {CgProfile} from "react-icons/cg"
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+const Navbar = ({logstatus,handleAuthentication}) => {
   const history = useNavigate();
   const { t } = useTranslation();
   const [home, setHome] = useState(1);
@@ -28,20 +29,19 @@ const Navbar = () => {
         </div>
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
-        <span className="flex flex-row gap-4 hidden md:flex whitespace-nowrap">
-          <button
-            className="pt-1.5 transition-all"
-            onClick={() => history("/login")}
-          >
-            {t("login")}
-          </button>
-          <button
-            className="pt-1.5 transition-all"
-            onClick={() => history("/signup")}
-          >
-            {t("signup")}
-          </button>
-        </span>
+        < AiOutlineShoppingCart size={35} style={{transform:"translateY(3px)"}} onClick={() => history(logstatus?"/cart":"/login")}/>
+         {logstatus?(
+                   <span className="flex flex-row gap-4 hidden md:flex">
+                   <CgProfile size={30} style={{transform:"translateY(5px)"}} onClick={() => history("/profile")}/>
+                   <button onClick={() => handleAuthentication(false)}>Logout</button>
+                   </span>
+         ):(
+        <span className="flex flex-row gap-4 hidden md:flex">
+          <button onClick={() => history("/login")}>{t("login")}</button>
+          <button onClick={() => history("/signup")}>{t("signup")}</button>
+        </span>)}
+
+
       </div>
       <div className="pb-2 mx-4">
         <SearchBar additionalClass="md:hidden" />

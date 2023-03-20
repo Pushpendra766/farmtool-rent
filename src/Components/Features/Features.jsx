@@ -7,6 +7,7 @@ const Features = () => {
   return (
     <div id="body">
     <div id="viewport"> 
+    <div id="scroll" >Scroll down</div>
     <div id="world"> 
     
      <svg id="svg" viewBox="0 0 3000 3000"> <path id="path" d="M4000,0C1000,882.5,1000,882.5,0,0"></path> 
