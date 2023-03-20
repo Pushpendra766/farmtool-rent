@@ -23,6 +23,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import Product from "./Screens/Product/Product";
+<<<<<<< HEAD
+=======
+import Cart from "../src/Screens/Cart/Cart";
+import Profile from "./SubComponents/Profile/Profile"
+import FirebaseData from "./FirebaseData/FirebaseData";
+>>>>>>> d9ec5361de6dcae6126de90f59de1606c41a9a44
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
