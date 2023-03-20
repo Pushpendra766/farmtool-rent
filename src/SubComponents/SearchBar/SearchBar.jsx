@@ -1,28 +1,56 @@
-import React, { useContext,useEffect,useState } from "react";
-import { BsSearch } from "react-icons/bs";
+import React, { useContext, useEffect, useState } from "react";
+import { BsSearch, BsFillMicMuteFill } from "react-icons/bs";
 import { MdMic } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import Context from "../../Context/Context";
 //import { data } from "../../data";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
+
 const SearchBar = ({ additionalClass }) => {
   const { t } = useTranslation();
-  const [data,setnewData]=useState([])
+  const [data, setnewData] = useState([]);
 
-  useEffect(()=>{
-        async function ofetch() {
-          db.ref("tools/").on("child_added", function (snapshot) {
+  useEffect(() => {
+    async function ofetch() {
+      db.ref("tools/").on("child_added", function (snapshot) {
         const messages = snapshot.val();
-       
-        setnewData(data => [...data, messages]);
 
-      }
-      )
+        setnewData((data) => [...data, messages]);
+      });
     }
     ofetch();
-  },[])
+  }, []);
   const contextApi = useContext(Context);
+
+  const [isListening, setIsListening] = useState(false);
+  let speechRecognition = new window.webkitSpeechRecognition();
+
+  speechRecognition.continuous = true;
+  speechRecognition.interimResults = true;
+  speechRecognition.lang = "en-us";
+
+  speechRecognition.onresult = (event) => {
+    if (event?.results) {
+      const transcript = Array.from(event?.results).map((result) => {
+        return result[0].transcript;
+      });
+      if (transcript.length > 0 && transcript[0]) {
+        contextApi.setSearch(transcript[0].split(".")[0]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isListening) {
+      speechRecognition.start();
+    } else {
+      speechRecognition.onresult();
+      speechRecognition.stop();
+      speechRecognition.abort();
+    }
+  }, [isListening]);
+
   return (
     <div className={`w-full mx-auto mt-1 flex flex-row ${additionalClass}`}>
       <input
@@ -37,18 +65,21 @@ const SearchBar = ({ additionalClass }) => {
       <span className="pt-2 cursor-pointer">
         <BsSearch className="relative right-6 text-primary" />
       </span>
-      <span className="pt-1 cursor-pointer text-[#ffffff]">
-        <MdMic size={25} />
+      <span
+        className="pt-1 cursor-pointer text-[#ffffff]"
+        onClick={(e) => setIsListening(!isListening)}
+      >
+        {isListening ? <BsFillMicMuteFill size={25} /> : <MdMic size={25} />}
       </span>
       {contextApi.search || contextApi.search.length > 0 ? (
         <div>
           <div className="md:w-6/12 mobile:w-10/12 md:top-12 items-center flex mobile:top-24 mobile:left-4 md:left-60 absolute bg-white border-dark-green rounded-md grid grid-cols-4 p-3">
-            {contextApi.search || contextApi.search.length > 0
+            {contextApi.search || contextApi.search?.length > 0
               ? data
                   .filter((e) => {
                     return e.name
                       .toLowerCase()
-                      .includes(contextApi.search.toLowerCase());
+                      .includes(contextApi?.search?.toLowerCase());
                   })
                   .map((e) => {
                     return <Component data={e} />;
@@ -57,7 +88,7 @@ const SearchBar = ({ additionalClass }) => {
             {data.filter((e) => {
               return e.name
                 .toLowerCase()
-                .includes(contextApi.search.toLowerCase());
+                .includes(contextApi.search?.toLowerCase());
             }).length == 0 ? (
               <p className="text-gray-dark p-0 whitespace-nowrap">
                 No Results Found
