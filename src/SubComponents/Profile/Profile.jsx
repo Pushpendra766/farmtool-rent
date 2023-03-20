@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-const Profile = ({about}) => {
-  const [data,setnewData]=useState([])
- const history  = useNavigate();
-  useEffect(()=>{
+const Profile = ({ about }) => {
+  const [data, setnewData] = useState([]);
+  const history = useNavigate();
+  useEffect(() => {
     //alert(about.email)
     async function ofetch() {
       if (about.email !== "undefined") {
@@ -21,8 +21,8 @@ const Profile = ({about}) => {
       }
     }
     ofetch();
-   //alert(data)
-  },[about])
+    //alert(data)
+  }, [about]);
 
   return (
     <>
@@ -55,14 +55,7 @@ const Profile = ({about}) => {
                   {" "}
                   Lend Land
                 </button>
-              </div>{" "}
-              <div>
-                {" "}
-                <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                  {" "}
-                  Lend Land
-                </button>
-              </div>{" "}
+              </div>{" "}{" "}
               <div>
                 {" "}
                 <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
@@ -100,7 +93,6 @@ const Profile = ({about}) => {
           </div>{" "}
           <div className="mt-20 text-center border-b pb-12">
             {" "}
-
             <h1 class="text-4xl font-small text-gray-700">
               {about.name}, <span class="font-light text-gray-500">27</span>
             </h1>{" "}
@@ -109,7 +101,6 @@ const Profile = ({about}) => {
               Your Equipments
             </p>
           </div>{" "}
-
         </div>
       </div>
     </>
