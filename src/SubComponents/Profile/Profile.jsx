@@ -5,16 +5,16 @@ import Category from "../../Components/Category/Category";
 import {data} from "../../data"
 let username, useremail;
 const Profile = () => {
-  
-  //const [data,setnewData]=useState([{}])
- const history  = useNavigate();
+  const history  = useNavigate();
+ // const [data,setnewData]=useState([])
+ 
   useEffect(()=>{
     //alert(about.email)
     username=localStorage.getItem("RName")
      useremail=localStorage.getItem("email")
     
     
-    // async function ofetch() {
+  
       
     //     let new_email = useremail.split("@")[0];
        
@@ -22,7 +22,6 @@ const Profile = () => {
     //       "child_added",
     //       function (snapshot) {
     //         const messages = snapshot.val();
-    //         //console.log(messages)
     //         setnewData((data) => [...data, messages]);
     //       }
     //     );
@@ -30,7 +29,10 @@ const Profile = () => {
     //   }
     
     // ofetch();
-   
+    // setInterval(()=>{
+    //   console.log(data)
+    // },3000)
+    
   },[])
 
   return (
