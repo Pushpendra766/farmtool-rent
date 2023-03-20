@@ -31,6 +31,24 @@ function App() {
     }, 3000);
   }, []);
   const [bgColor, setBgColor] = useState("bg-[#ffffff]");
+
+  const listOfTools = [
+    {
+      name: "Hand Held Tools",
+      product: "smallTools",
+      url: "https://5.imimg.com/data5/UU/MP/LH/SELLER-7374463/agricultural-hand-tools-250x250.jpg",
+    },
+    {
+      name: "Tractor Attachments",
+      product: "Tractorattachments",
+      url: "https://localbuyx.com/wp-content/uploads/2020/04/tractor-attachments.jpeg",
+    },
+    {
+      name: "Large Tools",
+      product: "largeTools",
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReCxs2EFrOl06GPotfgvtNJR4k2Mn2Wshx_3Hzm2EHVw&usqp=CAU&ec=48600112",
+    },
+  ];
   return (
     <div className={`App ${bgColor}`}>
       <>
@@ -48,8 +66,15 @@ function App() {
                     {/* <Trending /> */}
                     <HowItWorks />
                     <Testimonials />
-                    {/* <CategoryScreen /> */}
-                    <CategorySection />
+                    {listOfTools.map((e) => {
+                      return (
+                        <CategorySection
+                          name={e.name}
+                          product={e.product}
+                          url={e.url}
+                        />
+                      );
+                    })}
                     <Faq />
                     <Footer />
                     <ChatbotButton />
