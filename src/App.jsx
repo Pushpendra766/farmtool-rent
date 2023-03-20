@@ -26,11 +26,14 @@ import Product from "./Screens/Product/Product";
 import Cart from "../src/Screens/Cart/Cart";
 import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
+import LandTools from "./Screens/LandTool/LandTool";
+import LandMap from "./Components/LandMap/LandMap";
+import LandLend from "./Screens/LandLend/LandLend";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const [about, setAbout]=useState({})
+  const [about, setAbout] = useState({});
   const navigate = useNavigate();
   const handleAuthentication = (status) => {
     if (status == false) {
@@ -45,16 +48,17 @@ function App() {
     }
   };
   useEffect(() => {
-   // console.log(about)
+    // console.log(about)
     // Simulate loading delay
     let val = localStorage.getItem("RLog");
-    let username=localStorage.getItem("RName")
-    let useremail=localStorage.getItem("email")
-    
+    let username = localStorage.getItem("RName");
+    let useremail = localStorage.getItem("email");
+
     if (val == "yes") {
       setIsLoading(false);
       setAuthenticated(true);
-     
+      setAbout({ "name":username,
+      "email":useremail})
     } else if (!authenticated) {
       toast.info("New user? Sign Up then!");
     }
@@ -138,8 +142,9 @@ function App() {
                         />
                       );
                     })}
-                    <Testimonials />
+                    <LandMap />
                     <Faq />
+                    <Testimonials />
                     <Footer />
                     <ChatbotButton />
                   </>
@@ -163,7 +168,10 @@ function App() {
               !isLoading && (
                 <>
                   {" "}
-                  <Login handleAuthentication={handleAuthentication} setAbout={setAbout} />
+                  <Login
+                    handleAuthentication={handleAuthentication}
+                    setAbout={setAbout}
+                  />
                   <Footer />{" "}
                 </>
               )
@@ -174,7 +182,10 @@ function App() {
             element={
               !isLoading && (
                 <>
-                  <Signup handleAuthentication={handleAuthentication} setAbout={setAbout}/>
+                  <Signup
+                    handleAuthentication={handleAuthentication}
+                    setAbout={setAbout}
+                  />
                   <Footer />
                 </>
               )
@@ -184,7 +195,6 @@ function App() {
             path="/Category/:name"
             element={
               <>
-               
                 <CategoryScreen />
                 <Footer />
               </>
@@ -194,7 +204,6 @@ function App() {
             path="/Category/:name"
             element={
               <>
-               
                 <CategoryScreen />
                 <Footer />
               </>
@@ -204,7 +213,6 @@ function App() {
             path="/howitworks"
             element={
               <>
-                
                 <HowItWorks />
                 <Footer />
               </>
@@ -214,7 +222,6 @@ function App() {
             path="/cart"
             element={
               <>
-                
                 <Cart />
                 <Footer />
               </>
@@ -224,7 +231,6 @@ function App() {
             path="/product/:name"
             element={
               <>
-               
                 <Product />
                 <Footer />
               </>
@@ -234,7 +240,7 @@ function App() {
             path="/profile"
             element={
               <>
-                <Profile about={about} setAbout={setAbout}/>
+                <Profile about={about}/>
                 <Footer />
               </>
             }

@@ -36,16 +36,20 @@ const SearchBar = ({ additionalClass }) => {
         return result[0].transcript;
       });
       if (transcript.length > 0 && transcript[0]) {
-        contextApi.setSearch(transcript[0].split(".")[0]);
+        if (contextApi.prev !== transcript[0].split(".")[0]) {
+          contextApi.setSearch(transcript[0].split(".")[0]);
+          contextApi.setPrev(transcript[0].split(".")[0]);
+        }
       }
     }
   };
+
+  console.log(contextApi);
 
   useEffect(() => {
     if (isListening) {
       speechRecognition.start();
     } else {
-      speechRecognition.onresult();
       speechRecognition.stop();
       speechRecognition.abort();
     }
