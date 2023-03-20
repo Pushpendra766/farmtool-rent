@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-const Profile = ({ about }) => {
-  const [data, setnewData] = useState([]);
-
-  useEffect(() => {
+const Profile = ({about}) => {
+  const [data,setnewData]=useState([])
+ const history  = useNavigate();
+  useEffect(()=>{
     //alert(about.email)
     async function ofetch() {
       if (about.email !== "undefined") {
@@ -21,8 +21,9 @@ const Profile = ({ about }) => {
       }
     }
     ofetch();
-    //alert(data)
-  }, [about]);
+   //alert(data)
+  },[about])
+
   return (
     <>
       <div className="py-16">
@@ -88,31 +89,27 @@ const Profile = ({ about }) => {
                 </svg>
               </div>{" "}
             </div>{" "}
-            <div className="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
-              <button className="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+            <div class="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
+              <button class="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Rented Tools
               </button>
-              <button className="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+              <button class="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Cart
               </button>{" "}
             </div>{" "}
           </div>{" "}
           <div className="mt-20 text-center border-b pb-12">
             {" "}
-            <h1 className="text-4xl font-small text-gray-700">
-              {about.name}
-              <span className="font-light text-gray-500"></span>
+
+            <h1 class="text-4xl font-small text-gray-700">
+              {about.name}, <span class="font-light text-gray-500">27</span>
             </h1>{" "}
-            <p className="font-light text-gray-600 mt-3">{about.email}</p>{" "}
-            <p className="mt-8 text-gray-500 bg-mid border rounded-md">
+            <p class="font-light text-gray-600 mt-3">{about.email}</p>{" "}
+            <p class="mt-8 text-gray-500 bg-mid border rounded-md">
               Your Equipments
             </p>
-          </div>
-          {data.map((e, id) => {
-            <div key={id} mobile={false} data={e}>
-              {e.type}
-            </div>;
-          })}
+          </div>{" "}
+
         </div>
       </div>
     </>
