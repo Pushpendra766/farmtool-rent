@@ -43,10 +43,7 @@ const Signup = ({handleAuthentication}) => {
       // console.log("Password : ", password);
       // console.log("Confirm Password : ", confirmPassword);
       handleAuthentication(true);
-      setAbout({
-        "name":name,
-         "email":new_email
-       })
+      
      // toast.success("Sign Up is successfull")
      // navigate("/")
       return

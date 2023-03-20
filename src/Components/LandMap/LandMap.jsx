@@ -137,7 +137,7 @@ const LandMap = () => {
             {currentLand.rate}
           </p>
           <div className="text-center pt-4">
-            <button>Lease</button>
+            <button>Contact owner</button>
           </div>
         </div>
       </div>
