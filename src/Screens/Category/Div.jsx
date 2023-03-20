@@ -26,7 +26,7 @@ const Div = ({ data }) => {
         className="object-cover object-center h-60 rounded-md mt-2"
       />
       <div className="flex flex-col items-center">
-        <h3 className="md:text-xl mobile:text-[28px]">Tractor</h3>
+        <h3 className="md:text-xl mobile:text-[28px]">{data?.name}</h3>
         <p className="md:text-sm mobile:text-lg text-dark-green">
           Rs. {data?.price}{" "}
           <span className="line-through text-orange">{data?.price * 1.25}</span>
