@@ -26,10 +26,25 @@ const Intro = () => {
           {t("intro_subtitle")}
         </p>
         <div className="flex flex-row gap-6 md:gap-8 justify-center text-[#ffffff] text-lg md:text-xl">
-          <button className=" pt-1 md:pt-2 pb-2 md:pb-3 px-4 md:px-6 ">
-          {t("action_button1")}
+          <button
+            className=" pt-1 md:pt-2 pb-2 md:pb-3 px-4 md:px-6  transition-all"
+            onClick={(e) => {
+              e.preventDefault();
+              if (window.innerWidth < 600) {
+                window.scrollTo({ top: 625, behavior: "smooth" });
+              } else {
+                window.scrollTo({ top: 825, behavior: "smooth" });
+              }
+            }}
+          >
+            {t("action_button1")}
           </button>
-          <button className="pt-2 pb-3 px-4" onClick={()=>history("/howitworks")}>{t("action_button2")}</button>
+          <button
+            className="pt-2 pb-3 px-4 transition-all"
+            onClick={() => history("/howitworks")}
+          >
+            {t("action_button2")}
+          </button>
         </div>
       </div>
       <div className="z-0">

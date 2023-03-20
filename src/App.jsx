@@ -24,7 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import Product from "./Screens/Product/Product";
 import Cart from "../src/Screens/Cart/Cart";
-import Profile from "./SubComponents/Profile/Profile"
+import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
 
 function App() {
@@ -101,11 +101,16 @@ function App() {
   return (
     <div className={`App ${bgColor}`}>
       <>
-     
-        {!isLoading &&<>
-         {/* <FirebaseData/> */}
-          <Navbar logstatus={authenticated} handleAuthentication={handleAuthentication} /></>}
-           {authenticated&&<ToastContainer/>}
+        {!isLoading && (
+          <>
+            {/* <FirebaseData/> */}
+            <Navbar
+              logstatus={authenticated}
+              handleAuthentication={handleAuthentication}
+            />
+          </>
+        )}
+        {authenticated && <ToastContainer />}
         <Routes>
           <Route
             path="/"
@@ -115,12 +120,12 @@ function App() {
                   <LoadingAnimation setBgColor={setBgColor} />
                 ) : (
                   <>
-                  <Intro />
+                    <Intro />
                     {/* <Trending /> */}
-                    {listOfTools.map((e,id) => {
+                    {listOfTools.map((e, id) => {
                       return (
                         <CategorySection
-                        key={id}
+                          key={id}
                           name={e.name}
                           product={e.product}
                           url={e.url}
@@ -223,9 +228,8 @@ function App() {
             path="/profile"
             element={
               <>
-                
                 <Profile />
-                <Footer/>
+                <Footer />
               </>
             }
           />

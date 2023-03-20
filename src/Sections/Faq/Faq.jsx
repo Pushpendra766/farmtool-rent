@@ -5,7 +5,7 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 const Faq = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const faqsEnglish = [
     {
       question: "What types of farming tools can I rent from your service?",
@@ -96,27 +96,32 @@ const Faq = () => {
   ];
   const [currentFaq, setCurrentFaq] = useState(null);
   const [faqs, setFaqs] = useState([]);
-  useEffect(()=>{
-    if(i18next.language == "en"){
+  useEffect(() => {
+    if (i18next.language == "en") {
       setFaqs(faqsEnglish);
-    }else{
+    } else {
       setFaqs(faqsHindi);
     }
-  },[i18next.language])
+  }, [i18next.language]);
+
   return (
     <div className="md:py-5 mobile:py-4">
-      <p className="font-bold text-3xl text-center md:pb-2 mobile:pb-1">{t("faqs")}</p>
-      {faqs && faqs.map((faq, index) => {
-        return (
-          <Component
-            faq={faq}
-            key={faq.question}
-            currentFaq={currentFaq}
-            setCurrentFaq={setCurrentFaq}
-            idx={index}
-          />
-        );
-      })}
+      <p className="font-bold text-3xl text-center md:pb-2 mobile:pb-1">
+        {t("faqs")}
+      </p>
+ 
+        {faqs &&
+          faqs.map((faq, index) => {
+            return (
+              <Component
+                faq={faq}
+                key={faq.question}
+                currentFaq={currentFaq}
+                setCurrentFaq={setCurrentFaq}
+                idx={index}
+              />
+            );
+          })}
     </div>
   );
 };

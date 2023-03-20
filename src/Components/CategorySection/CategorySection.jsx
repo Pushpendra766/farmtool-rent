@@ -8,20 +8,18 @@ import { useNavigate } from "react-router";
 
 const CategorySection = ({ name, product, url }) => {
   const userRef = React.useRef(null);
-  const [data,setnewData]=useState([])
+  const [data, setnewData] = useState([]);
   const history = useNavigate();
-  useEffect(()=>{
-        async function ofetch() {
-          db.ref("tools/").on("child_added", function (snapshot) {
+  useEffect(() => {
+    async function ofetch() {
+      db.ref("tools/").on("child_added", function (snapshot) {
         const messages = snapshot.val();
-       // console.log(messages)
-        setnewData(data => [...data, messages]);
-
-      }
-      )
+        // console.log(messages)
+        setnewData((data) => [...data, messages]);
+      });
     }
     ofetch();
-  },[])
+  }, []);
   return (
     <div className="flex relative align-middle m-2 md:py-1 mobile:pt-1 mobile:pb-2.5 md:pt-0 md:pb-0 rounded-xl border-lightest-grey border-1 shadow-xl my-6 sm:flex-col mobile:flex-col md:flex-row">
       <div
@@ -40,7 +38,7 @@ const CategorySection = ({ name, product, url }) => {
             ? { width: "32vw" }
             : { width: "39vw" }
         }
-        className="flex sm:flex-row mobile:flex-row mobile:items-center mobile:justify-between md:justify-center md:flex-col items-center p-1 rounded-md mx-2 md:px-2 justify-center md:mx-0 mobile:mx-2"
+        className="flex sm:flex-row whitespace-nowrap mobile:flex-row mobile:items-center mobile:justify-between md:justify-center md:flex-col items-center p-1 rounded-md mx-2 md:px-2 justify-center md:mx-0 mobile:mx-2"
       >
         <img
           className="w-full rounded md:block mobile:hidden"
@@ -64,18 +62,18 @@ const CategorySection = ({ name, product, url }) => {
         {product === "smallTools"
           ? data
               .filter((e) => e.type === product)
-              .map((e,id) => {
+              .map((e, id) => {
                 return <Category key={id} mobile={true} data={e} />;
               })
           : product === "largeTools"
           ? data
               .filter((e) => e.type === product)
-              .map((e,id) => {
+              .map((e, id) => {
                 return <Category key={id} mobile={true} data={e} />;
               })
           : data
               .filter((e) => e.type === product)
-              .map((e,id) => {
+              .map((e, id) => {
                 return <Category key={id} mobile={true} data={e} />;
               })}
       </div>
