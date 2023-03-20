@@ -29,7 +29,7 @@ const Navbar = ({logstatus,handleAuthentication}) => {
         </div>
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
-        < AiOutlineShoppingCart size={35} style={{transform:"translateY(3px)"}} onClick={() => history("/cart")}/>
+        < AiOutlineShoppingCart size={35} style={{transform:"translateY(3px)"}} onClick={() => history(logstatus?"/cart":"/login")}/>
          {logstatus?(
                    <span className="flex flex-row gap-4 hidden md:flex">
                    <CgProfile size={30} style={{transform:"translateY(5px)"}} onClick={() => history("/profile")}/>
