@@ -115,7 +115,7 @@ function App() {
                   <>
                   <Intro />
                     {/* <Trending /> */}
-                    {listOfTools.map((e) => {
+                    {listOfTools.map((e,id) => {
                       return (
                         <CategorySection
                         key={id}

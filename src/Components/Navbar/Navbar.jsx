@@ -36,8 +36,8 @@ const Navbar = ({ logstatus, handleAuthentication }) => {
         {logstatus ? (
           <span className="flex flex-row gap-4 hidden md:flex">
             <CgProfile size={30} style={{ transform: "translateY(5px)" }} onClick={() => history("/profile")} />
-            <svg  width="4.7" height="8" viewBox="0 0 16 27" style={{transform:"rotate(270deg)",marginTop:"15px"}} xmlns="http://www.w3.org/2000/svg" class="zZ3yfL _2uV9Et">
-              <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2gTTdy">
+            <svg  width="4.7" height="8" viewBox="0 0 16 27" style={{transform:"rotate(270deg)",marginTop:"15px"}} xmlns="http://www.w3.org/2000/svg" className="zZ3yfL _2uV9Et">
+              <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" className="_2gTTdy">
               </path></svg>
 
             <button className="w-[106px]" onClick={() => handleAuthentication(false)}>{t("logout")}</button>
