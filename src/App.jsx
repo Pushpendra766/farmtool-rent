@@ -24,7 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import Product from "./Screens/Product/Product";
 import Cart from "../src/Screens/Cart/Cart";
-import Profile from "./SubComponents/Profile/Profile"
+import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
 
 function App() {
