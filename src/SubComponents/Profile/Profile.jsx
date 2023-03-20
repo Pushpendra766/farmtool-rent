@@ -2,24 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-const Profile = ({about}) => {
-  const [data,setnewData]=useState([])
+const Profile = ({ about }) => {
+  const [data, setnewData] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     //alert(about.email)
     async function ofetch() {
-      if(about.email!=="undefined"){
-      let new_email=about.email.split('@')[0]
-      db.ref("users/"+new_email+"/tools/").on("child_added", function (snapshot) {
-        const messages = snapshot.val();
-        //console.log(messages)
-        setnewData((data) => [...data, messages]);
-      });
+      if (about.email !== "undefined") {
+        let new_email = about.email.split("@")[0];
+        db.ref("users/" + new_email + "/tools/").on(
+          "child_added",
+          function (snapshot) {
+            const messages = snapshot.val();
+            //console.log(messages)
+            setnewData((data) => [...data, messages]);
+          }
+        );
+      }
     }
-  }
     ofetch();
-   //alert(data)
-  },[about])
+    //alert(data)
+  }, [about]);
   return (
     <>
       <div className="py-16">
@@ -28,7 +31,6 @@ const Profile = ({about}) => {
           <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="grid grid-cols-3 my-3 sm:grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
               <div>
-<<<<<<< HEAD
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -41,9 +43,6 @@ const Profile = ({about}) => {
                 </button>
               </div>{" "}
               <div>
-=======
-              <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
->>>>>>> 9b305dc25a50f1df9676ed0f2bd8bf104a8f4b47
                 {" "}
                 <button
                   onClick={(e) => {
@@ -58,24 +57,17 @@ const Profile = ({about}) => {
               </div>{" "}
               <div>
                 {" "}
-<<<<<<< HEAD
-                <button class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                  {" "}
-                  Settings
-                </button>
-=======
                 <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                {" "}
-                Lend Land
-              </button>
+                  {" "}
+                  Lend Land
+                </button>
               </div>{" "}
               <div>
                 {" "}
                 <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                {" "}
-                Settings
-              </button>
->>>>>>> 9b305dc25a50f1df9676ed0f2bd8bf104a8f4b47
+                  {" "}
+                  Settings
+                </button>
               </div>{" "}
             </div>{" "}
             <div className="relative">
@@ -96,52 +88,31 @@ const Profile = ({about}) => {
                 </svg>
               </div>{" "}
             </div>{" "}
-<<<<<<< HEAD
-            <div class="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
-              <button class="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                Rented Tools
-              </button>
-              <button class="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-=======
             <div className="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
               <button className="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                
                 Rented Tools
               </button>
               <button className="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-               
->>>>>>> 9b305dc25a50f1df9676ed0f2bd8bf104a8f4b47
                 Cart
               </button>{" "}
             </div>{" "}
           </div>{" "}
           <div className="mt-20 text-center border-b pb-12">
             {" "}
-<<<<<<< HEAD
-            <h1 class="text-4xl font-small text-gray-700">
-              {about.name}, <span class="font-light text-gray-500">27</span>
-            </h1>{" "}
-            <p class="font-light text-gray-600 mt-3">{about.email}</p>{" "}
-            <p class="mt-8 text-gray-500 bg-mid border rounded-md">
-              Your Equipments
-            </p>
-          </div>{" "}
-=======
             <h1 className="text-4xl font-small text-gray-700">
-             {about.name}<span className="font-light text-gray-500"></span>
+              {about.name}
+              <span className="font-light text-gray-500"></span>
             </h1>{" "}
             <p className="font-light text-gray-600 mt-3">{about.email}</p>{" "}
             <p className="mt-8 text-gray-500 bg-mid border rounded-md">
-             Your Equipments
+              Your Equipments
             </p>
-          
           </div>
-          { data
-              .map((e, id) => {
-               <div key={id} mobile={false} data={e} >{e.type}</div>;
-              })
-            }
->>>>>>> 9b305dc25a50f1df9676ed0f2bd8bf104a8f4b47
+          {data.map((e, id) => {
+            <div key={id} mobile={false} data={e}>
+              {e.type}
+            </div>;
+          })}
         </div>
       </div>
     </>
