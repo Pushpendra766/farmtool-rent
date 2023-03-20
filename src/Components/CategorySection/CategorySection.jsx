@@ -14,7 +14,7 @@ const CategorySection = ({ name, product, url }) => {
         async function ofetch() {
           db.ref("tools/").on("child_added", function (snapshot) {
         const messages = snapshot.val();
-        console.log(messages)
+       // console.log(messages)
         setnewData(data => [...data, messages]);
 
       }

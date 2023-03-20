@@ -101,7 +101,7 @@ function App() {
       <>
      
         {!isLoading &&<>
-         <FirebaseData/>
+         {/* <FirebaseData/> */}
           <Navbar logstatus={authenticated} handleAuthentication={handleAuthentication} /></>}
            {authenticated&&<ToastContainer/>}
         <Routes>
@@ -113,10 +113,7 @@ function App() {
                   <LoadingAnimation setBgColor={setBgColor} />
                 ) : (
                   <>
-                    
-                   
-                    <Intro />
-                   
+                  <Intro />
                     {/* <Trending /> */}
                     <Testimonials />
                     {listOfTools.map((e,id) => {

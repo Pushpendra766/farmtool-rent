@@ -1,13 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect,useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdMic } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import Context from "../../Context/Context";
-import { data } from "../../data";
+//import { data } from "../../data";
 import { useNavigate } from "react-router";
-
+import db from "../../firebase";
 const SearchBar = ({ additionalClass }) => {
   const { t } = useTranslation();
+  const [data,setnewData]=useState([])
+
+  useEffect(()=>{
+        async function ofetch() {
+          db.ref("tools/").on("child_added", function (snapshot) {
+        const messages = snapshot.val();
+       
+        setnewData(data => [...data, messages]);
+
+      }
+      )
+    }
+    ofetch();
+  },[])
   const contextApi = useContext(Context);
   return (
     <div className={`w-full mx-auto mt-1 flex flex-row ${additionalClass}`}>
