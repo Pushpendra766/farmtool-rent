@@ -37,13 +37,8 @@ function App() {
 
     setAuthenticated(status);
     if(status){
-    //  setTimeout(()=>{
-     
       navigate("/")
-    //  },4000)
-   
     }
-    //
   }
   useEffect(() => {
     // Simulate loading delay
@@ -158,13 +153,8 @@ function App() {
           <Route
             path="/login"
             element={
-             
-                
                  !isLoading&&( <> <Login handleAuthentication={handleAuthentication} />
                  <Footer /> </>)
-                
-               
-              
             }
           />
           <Route
@@ -172,7 +162,6 @@ function App() {
             element={
               !isLoading&&(
               <>
-
                 <Signup handleAuthentication={handleAuthentication} />
                 <Footer />
               </>
