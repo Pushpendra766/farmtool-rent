@@ -163,6 +163,16 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/Category/:name"
+            element={
+              <>
+                <Navbar />
+                <CategoryScreen />
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </>
     </div>
