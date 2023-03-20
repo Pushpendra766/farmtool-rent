@@ -4,15 +4,10 @@ import SearchBar from "../../SubComponents/SearchBar/SearchBar";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-<<<<<<< HEAD
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-=======
-import { CgProfile } from "react-icons/cg"
-import { AiOutlineShoppingCart } from 'react-icons/ai'
-import { BiLogIn } from 'react-icons/bi'
+import { BiLogIn } from "react-icons/bi";
 
->>>>>>> 6e5636178017182183bcb7b3917e53f4eed1e458
 const Navbar = ({ logstatus, handleAuthentication }) => {
   const history = useNavigate();
   const { t } = useTranslation();
@@ -36,10 +31,15 @@ const Navbar = ({ logstatus, handleAuthentication }) => {
         </div>
         <SearchBar additionalClass="hidden md:flex" />
         <Language />
-<<<<<<< HEAD
         <AiOutlineShoppingCart
           size={35}
-          style={{ transform: "translateY(3px)" }}
+          style={{ transform: "translateY(3px) scale(1.3)" }}
+          onClick={() => history(logstatus ? "/cart" : "/login")}
+        />
+        <BiLogIn
+          className="md:hidden"
+          size={35}
+          style={{ transform: "translateY(3px) scale(1.3)" }}
           onClick={() => history(logstatus ? "/cart" : "/login")}
         />
         {logstatus ? (
@@ -49,34 +49,38 @@ const Navbar = ({ logstatus, handleAuthentication }) => {
               style={{ transform: "translateY(5px)" }}
               onClick={() => history("/profile")}
             />
-            <button onClick={() => handleAuthentication(false)}>Logout</button>
-          </span>
-        ) : (
-          <span className="flex flex-row gap-4 hidden md:flex whitespace-nowrap">
-            <button onClick={() => history("/login")}>{t("login")}</button>
-            <button onClick={() => history("/signup")}>{t("signup")}</button>
-          </span>
-        )}
-=======
-        < AiOutlineShoppingCart size={35} style={{ transform: "translateY(3px) scale(1.3)" }} onClick={() => history(logstatus ? "/cart" : "/login")} />
-        <BiLogIn className="md:hidden" size={35} style={{ transform: "translateY(3px) scale(1.3)" }} onClick={() => history(logstatus ? "/cart" : "/login")} />
-        {logstatus ? (
-          <span className="flex flex-row gap-4 hidden md:flex">
-            <CgProfile size={30} style={{ transform: "translateY(5px)" }} onClick={() => history("/profile")} />
-            <svg  width="4.7" height="8" viewBox="0 0 16 27" style={{transform:"rotate(270deg)",marginTop:"15px"}} xmlns="http://www.w3.org/2000/svg" className="zZ3yfL _2uV9Et">
-              <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" className="_2gTTdy">
-              </path></svg>
+            <svg
+              width="4.7"
+              height="8"
+              viewBox="0 0 16 27"
+              style={{ transform: "rotate(270deg)", marginTop: "15px" }}
+              xmlns="http://www.w3.org/2000/svg"
+              className="zZ3yfL _2uV9Et"
+            >
+              <path
+                d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                fill="#fff"
+                className="_2gTTdy"
+              ></path>
+            </svg>
 
-            <button className="w-[106px]" onClick={() => handleAuthentication(false)}>{t("logout")}</button>
+            <button
+              className="w-[106px]"
+              onClick={() => handleAuthentication(false)}
+            >
+              {t("logout")}
+            </button>
           </span>
         ) : (
           <span className="flex flex-row gap-4 hidden  md:flex">
-            <button className="w-[100px]" onClick={() => history("/login")}>{t("login")}</button>
-            <button className="w-[100px]" onClick={() => history("/signup")}>{t("signup")}</button>
-          </span>)}
-
-
->>>>>>> 6e5636178017182183bcb7b3917e53f4eed1e458
+            <button className="w-[100px]" onClick={() => history("/login")}>
+              {t("login")}
+            </button>
+            <button className="w-[100px]" onClick={() => history("/signup")}>
+              {t("signup")}
+            </button>
+          </span>
+        )}
       </div>
       <div className="pb-2 mx-4">
         <SearchBar additionalClass="md:hidden" />

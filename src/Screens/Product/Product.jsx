@@ -50,7 +50,6 @@ const Product = () => {
             <AiFillStar className="mt-1" />
           </span>
           <p className="text-base">{product?.description}</p>
-<<<<<<< HEAD
           <p className="text-lg font-bold">
             Rs. {product?.price}{" "}
             <span className="line-through text-gray-dark">
@@ -58,10 +57,6 @@ const Product = () => {
             </span>
           </p>
           <div className="flex gap-6 text-lg">
-=======
-          <p className="text-lg font-bold">₹ {product?.price}</p>
-          <div className="flex gap-6 text-base whitespace-nowrap md:text-lg">
->>>>>>> 5b5f1d516527922935ee5dadf56c4e7a2766d852
             <button className="py-2 px-4">Rent</button>
             <button>Add to Rentlist</button>
           </div>
