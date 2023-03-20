@@ -44,7 +44,9 @@ const SearchBar = ({ additionalClass }) => {
                 .toLowerCase()
                 .includes(contextApi.search.toLowerCase());
             }).length == 0 ? (
-              <p className="text-gray-dark p-0">No Results Found</p>
+              <p className="text-gray-dark p-0 whitespace-nowrap">
+                No Results Found
+              </p>
             ) : null}
           </div>
         </div>
