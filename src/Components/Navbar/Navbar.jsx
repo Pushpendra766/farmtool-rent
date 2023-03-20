@@ -36,7 +36,7 @@ const Navbar = ({logstatus,handleAuthentication}) => {
                    <button onClick={() => handleAuthentication(false)}>Logout</button>
                    </span>
          ):(
-        <span className="flex flex-row gap-4 hidden md:flex">
+        <span className="flex flex-row gap-4 hidden md:flex whitespace-nowrap">
           <button onClick={() => history("/login")}>{t("login")}</button>
           <button onClick={() => history("/signup")}>{t("signup")}</button>
         </span>)}

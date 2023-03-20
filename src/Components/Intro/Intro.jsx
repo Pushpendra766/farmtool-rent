@@ -27,9 +27,9 @@ const Intro = () => {
         </p>
         <div className="flex flex-row gap-6 md:gap-8 justify-center text-[#ffffff] text-lg md:text-xl">
           <button className=" pt-1 md:pt-2 pb-2 md:pb-3 px-4 md:px-6 ">
-            Download App
+          {t("action_button1")}
           </button>
-          <button className="pt-2 pb-3 px-4">Features</button>
+          <button className="pt-2 pb-3 px-4" onClick={()=>history("/howitworks")}>{t("action_button2")}</button>
         </div>
       </div>
       <div className="z-0">

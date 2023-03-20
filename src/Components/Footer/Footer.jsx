@@ -6,17 +6,20 @@ import {
   AiFillTwitterCircle,
 } from "react-icons/ai";
 import TractorAnimation from "../TractorAnimation/TractorAnimation";
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+  const {t} = useTranslation();
   return (
     <footer className="relative shadow-xl pt-3 pb-6 mb-1 bg-gradient-to-t from-[#3BB78F] to-[#0BAB64]">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
             <h4 className="text-3xl fonat-semibold text-blueGray-700">
-              Let's keep in touch!
+              {t("contact")}
             </h4>
             <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-              Find us on any of these platforms, we respond 1-2 business days.
+              {t("footer_subtitle")}
             </h5>
             <div className="mt-6 lg:mb-0 mb-6">
               <button
@@ -65,7 +68,7 @@ const Footer = () => {
             <div className="flex  items-top mb-6">
               <div className="w-full lg:w-4/12 px-4 ml-auto">
                 <span className="block uppercase cursor-pointer text-md font-bold mb-2">
-                  Useful Links
+                  {t("links")}
                 </span>
                 <ul className="list-unstyled">
                   <li>
@@ -138,13 +141,13 @@ const Footer = () => {
           </div>
 
           <button className="text-[#ffffff] justify-center text-center rounded-lg-shadow px-10 py-3 flex items-center">
-            Contact US
+            {t("contact_us")}
           </button>
         </div>
       </div>
       <TractorAnimation />
       <div className="text-center font-semibold pt-4">
-        <p>Code Casters @2023</p>
+        <p>Team Unstoppable @2023</p>
       </div>
     </footer>
   );
