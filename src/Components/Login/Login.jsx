@@ -4,7 +4,7 @@ import { ToastContainer, toast ,Slide, Zoom, Flip, Bounce } from 'react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router";
 import bcrypt  from "bcryptjs"
-const Login = ({handleAuthentication}) => {
+const Login = ({handleAuthentication,setAbout}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,20 +20,25 @@ const Login = ({handleAuthentication}) => {
      let fireuser = snapshot.val().name
      let firepass = snapshot.val().password
      
-      let bpass=bcrypt.compareSync(password, firepass); 
+      //let bpass=bcrypt.compareSync(password, firepass); 
       if (new_email != fireemail ||
-        !bpass)
+        firepass!=password)
        toast.warning("Entered email or password are incorrect ");
       else {
        
         localStorage.setItem("RLog", "yes");
         localStorage.setItem("RName", fireuser);
+        localStorage.setItem("email", email);
         localStorage.setItem("logged", true);
        // toast.success("Successfully logged in...")
+       
       setEmail("");
       setPassword("");
       handleAuthentication(true);
-   
+      setAbout({
+        "name":fireuser,
+         "email":new_email
+       })
   };
 })}
   return (
