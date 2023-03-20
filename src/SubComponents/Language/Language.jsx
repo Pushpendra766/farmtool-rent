@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import i18next from "i18next";
+import React, { useEffect, useState } from "react";
 import { MdLanguage } from "react-icons/md";
 import i18n from "../../i18n";
 
@@ -13,6 +14,13 @@ const Language = () => {
       i18n.changeLanguage("hi");
     }
   };
+  useEffect(()=>{
+    if(i18next.language == "en"){
+      setCurrentLang("हिंदी");
+    }else{
+      setCurrentLang("English");
+    }
+  }, [])
   return (
     <div
       className="flex flex-row gap-2 cursor-pointer items-center"

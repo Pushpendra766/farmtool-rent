@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 const Testimonials = () => {
-  const reviews = [
+  const {t} = useTranslation();
+  const [reviews, setReviews] = useState([]);
+  const reviewsEnglish = [
     {
       image: "farmeri1.png",
       name: "Dhirendra Kumar",
@@ -28,10 +31,45 @@ const Testimonials = () => {
       rating: 4.5,
     },
   ];
+
+  const reviewsHindi = [
+    {
+      image: "farmeri1.png",
+      name: "धीरेंद्र कुमार",
+      text: "मैंने इस किराये की सेवा से एक चिप्पर श्रेडर किराए पर लिया और यह एक आकर्षण की तरह काम किया! मशीन अच्छी तरह से बनाए रखी गई थी और अच्छी स्थिति में थी। कर्मचारी बहुत मददगार थे और उन्होंने मुझे कदम-दर-कदम ऑपरेटिंग निर्देश दिए। गुणवत्ता वाले उपकरणों की आवश्यकता वाले किसी को भी इस किराये की सेवा की अत्यधिक अनुशंसा करें।",
+      rating: 5,
+    },
+    {
+      image: "farmeri2.png",
+      name: "रवि पटेल",
+      text: "मैंने इस किराये की सेवा से एक मिनी-एक्सकेवेटर किराए पर लिया और यह काम के लिए एकदम सही उपकरण था। उपकरण उत्कृष्ट स्थिति में थे, और कर्मचारी बहुत सहायक और मित्रवत थे। इस किराये की सेवा द्वारा प्रदान किए गए उच्च-गुणवत्ता वाले उपकरणों के कारण, मैं अपनी परियोजना को जल्दी और कुशलता से पूरा करने में सक्षम था।",
+      rating: 4.5,
+    },
+    {
+      image: "farmeri3.png",
+      name: "विश्वास सिंह",
+      text: "इस किराये की सेवा के साथ मेरा अनुभव बहुत अच्छा रहा। मैंने एक ट्रेंचर किराए पर लिया और इससे प्रभावित हुआ कि इसका उपयोग करना कितना आसान था। मशीन साफ, अच्छी तरह से बनाए रखी गई और अच्छी स्थिति में थी। स्टाफ बहुत जानकार था और मेरे सभी सवालों के जवाब देने के लिए समय लेता था। मैं निश्चित रूप से किसी ऐसे व्यक्ति को इस सेवा की सिफारिश करूंगा जिसे गुणवत्तापूर्ण उपकरणों की आवश्यकता है।",
+      rating: 3,
+    },
+    {
+      image: "farmeri4.png",
+      name: "किशन चंद",
+      text: "मैंने इस किराये की सेवा से एक मिनी-एक्सकेवेटर किराए पर लिया और यह काम के लिए एकदम सही उपकरण था। उपकरण उत्कृष्ट स्थिति में थे, और कर्मचारी बहुत सहायक और मित्रवत थे। इस किराये की सेवा द्वारा प्रदान किए गए उच्च-गुणवत्ता वाले उपकरणों के कारण, मैं अपनी परियोजना को जल्दी और कुशलता से पूरा करने में सक्षम था।",
+      rating: 4.5,
+    },
+  ];
+  useEffect(()=>{
+    if(i18n.language == "en"){
+      setReviews(reviewsEnglish);
+    }else{
+      setReviews(reviewsHindi);
+    }
+  });
+  
   return (
     <div className="md:my-4 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">
       <p className="text-center text-3xl font-bold md:pb-8 mobile:pb-4">
-        Testimonials
+        {t("testimonial")}
       </p>
       <div className="md:flex mx-auto md:mt-14 mobile:my-0 w-10/12 items-center justify-evenly">
         {reviews.map((review) => {

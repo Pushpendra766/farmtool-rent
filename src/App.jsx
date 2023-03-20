@@ -22,6 +22,8 @@ import CategorySection from "./Components/CategorySection/CategorySection";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router";
+import Product from "./Screens/Product/Product";
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
@@ -125,7 +127,6 @@ function App() {
                  
                     <Intro />
                     {/* <Trending /> */}
-                    <HowItWorks />
                     <Testimonials />
                     {listOfTools.map((e) => {
                       return (
@@ -194,6 +195,26 @@ function App() {
               <>
                 <Navbar />
                 <CategoryScreen />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/howitworks"
+            element={
+              <>
+                <Navbar />
+                <HowItWorks />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <>
+                <Navbar />
+                <Product />
                 <Footer />
               </>
             }
