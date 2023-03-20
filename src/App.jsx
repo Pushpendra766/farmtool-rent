@@ -27,6 +27,7 @@ import Cart from "../src/Screens/Cart/Cart";
 import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
 import LandTools from "./Screens/LandTool/LandTool";
+import LandMap from "./Components/LandMap/LandMap";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -139,8 +140,9 @@ function App() {
                         />
                       );
                     })}
-                    <Testimonials />
+                    <LandMap/>
                     <Faq />
+                    <Testimonials />
                     <Footer />
                     <ChatbotButton />
                   </>
