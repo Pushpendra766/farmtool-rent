@@ -2,31 +2,35 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-const Profile = ({about,setAbout}) => {
-  const [data,setnewData]=useState([])
+import {data} from "../../data"
+let username, useremail;
+const Profile = () => {
+  
+  //const [data,setnewData]=useState([{}])
  const history  = useNavigate();
   useEffect(()=>{
     //alert(about.email)
-    let username=localStorage.getItem("RName")
-    let useremail=localStorage.getItem("email")
+    username=localStorage.getItem("RName")
+     useremail=localStorage.getItem("email")
+    
+    
+    // async function ofetch() {
+      
+    //     let new_email = useremail.split("@")[0];
+       
+    //     await db.ref("users/" + new_email + "/tools/").on(
+    //       "child_added",
+    //       function (snapshot) {
+    //         const messages = snapshot.val();
+    //         //console.log(messages)
+    //         setnewData((data) => [...data, messages]);
+    //       }
+    //     );
+        
+    //   }
+    
+    // ofetch();
    
-    setAbout({ "name":username,
-    "email":useremail})
-    async function ofetch() {
-      if (about.email !== "undefined") {
-        let new_email = about.email.split("@")[0];
-        db.ref("users/" + new_email + "/tools/").on(
-          "child_added",
-          function (snapshot) {
-            const messages = snapshot.val();
-            //console.log(messages)
-            setnewData((data) => [...data, messages]);
-          }
-        );
-      }
-    }
-    ofetch();
-   alert(data)
   },[])
 
   return (
@@ -42,7 +46,7 @@ const Profile = ({about,setAbout}) => {
                     e.preventDefault();
                     history("/profile/landTools");
                   }}
-                  class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
+                  className="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
                 >
                   {" "}
                   Lend Tools
@@ -55,21 +59,15 @@ const Profile = ({about,setAbout}) => {
                     e.preventDefault();
                     history("/profile/lendland");
                   }}
-                  class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
+                  className="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
                 >
                   {" "}
                   Lend Land
                 </button>
               </div>{" "}
+             {" "}
               <div>
-                {" "}
-                <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
-                  {" "}
-                  Lend Land
-                </button>
-              </div>{" "}
-              <div>
-                {" "}
+               
                 <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                   {" "}
                   Settings
@@ -94,11 +92,11 @@ const Profile = ({about,setAbout}) => {
                 </svg>
               </div>{" "}
             </div>{" "}
-            <div class="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
-              <button class="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+            <div className="space-x-10 flex justify-between mt-32 md:mt-0 md:justify-center">
+              <button className="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Rented Tools
               </button>
-              <button class="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+              <button className="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Cart
               </button>{" "}
             </div>{" "}
@@ -106,16 +104,23 @@ const Profile = ({about,setAbout}) => {
           <div className="mt-20 text-center border-b pb-12">
             {" "}
 
-            <h1 class="text-4xl font-small text-gray-700">
-              {about.name}, <span class="font-light text-gray-500">27</span>
+            <h1 className="text-4xl font-small text-gray-700">
+              {username} <span className="font-light text-gray-500"></span>
             </h1>{" "}
-            <p class="font-light text-gray-600 mt-3">{about.email}</p>{" "}
-            <p class="mt-8 text-gray-500 bg-mid border rounded-md">
+            <p className="font-light text-gray-600 mt-3">{useremail}</p>{" "}
+            <p className="mt-8 text-gray-500 bg-mid border rounded-md">
               Your Equipments
             </p>
-          </div>{" "}
-
+          </div>
+          <div className="flex overflow-scroll">{ data.map((e, id) => {
+               
+               return <Category key={id} mobile={false} data={e} />
+              })
+            }</div>
+          
         </div>
+       
+            
       </div>
     </>
   );

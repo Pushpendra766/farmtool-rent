@@ -240,7 +240,7 @@ function App() {
             path="/profile"
             element={
               <>
-                <Profile about={about}/>
+                <Profile />
                 <Footer />
               </>
             }
