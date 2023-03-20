@@ -28,6 +28,7 @@ import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
 import LandTools from "./Screens/LandTool/LandTool";
 import LandMap from "./Components/LandMap/LandMap";
+import LandLend from "./Screens/LandLend/LandLend";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -140,7 +141,7 @@ function App() {
                         />
                       );
                     })}
-                    <LandMap/>
+                    <LandMap />
                     <Faq />
                     <Testimonials />
                     <Footer />
@@ -248,6 +249,15 @@ function App() {
             element={
               <>
                 <LandTools about={about} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/profile/lendland"
+            element={
+              <>
+                <LandLend about={about} />
                 <Footer />
               </>
             }

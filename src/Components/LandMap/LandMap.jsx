@@ -58,13 +58,13 @@ const LandMap = () => {
       </p>
       <div className="w-min mx-auto flex gap-4 p-4 rounded-md bg-[#ffffff]">
         <div className="border-2 border-[#9fa7b9] p-4 rounded-md">
-          <h3 className="text-lg font-semibold whitespace-nowrap">
-            List of locations
+          <h3 className="text-lg font-semibold whitespace-nowrap text-dark-green">
+            List of locations :-
           </h3>
           {landData.map((land, idx) => {
             return (
               <div
-                className={`cursor-pointer hover:bg-[#e8f3fc] ${
+                className={`cursor-pointer rounded-md hover:bg-[#e8f3fc] ${
                   land.name === currentLand.name && "bg-[#cfe2f2]"
                 }`}
                 onClick={() => setCurrentLand(landData[idx])}
@@ -92,8 +92,8 @@ const LandMap = () => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
         <div className="border-2 border-[#9fa7b9] rounded-md p-4 whitespace-nowrap">
-          <h3 className="text-lg font-semibold whitespace-nowrap">
-            Land details
+          <h3 className="text-lg font-semibold whitespace-nowrap text-dark-green">
+            Land details :-
           </h3>
           <p>
             <span className="font-semibold">Owner name: </span>

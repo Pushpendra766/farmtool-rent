@@ -8,15 +8,18 @@ const Profile = ({about}) => {
   useEffect(()=>{
     //alert(about.email)
     async function ofetch() {
-      if(about.email!=="undefined"){
-      let new_email=about.email.split('@')[0]
-      db.ref("users/"+new_email+"/tools/").on("child_added", function (snapshot) {
-        const messages = snapshot.val();
-        //console.log(messages)
-        setnewData((data) => [...data, messages]);
-      });
+      if (about.email !== "undefined") {
+        let new_email = about.email.split("@")[0];
+        db.ref("users/" + new_email + "/tools/").on(
+          "child_added",
+          function (snapshot) {
+            const messages = snapshot.val();
+            //console.log(messages)
+            setnewData((data) => [...data, messages]);
+          }
+        );
+      }
     }
-  }
     ofetch();
    //alert(data)
   },[about])
@@ -42,18 +45,30 @@ const Profile = ({about}) => {
               </div>{" "}
               <div>
                 {" "}
-                <button class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    history("/profile/lendland");
+                  }}
+                  class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5"
+                >
                   {" "}
                   Lend Land
                 </button>
               </div>{" "}
               <div>
                 {" "}
-                <button class="text-white my-3 mx-1 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+                <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+                  {" "}
+                  Lend Land
+                </button>
+              </div>{" "}
+              <div>
+                {" "}
+                <button className="text-white my-3 mx-2 py-2 px-1 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                   {" "}
                   Settings
                 </button>
-
               </div>{" "}
             </div>{" "}
             <div className="relative">
