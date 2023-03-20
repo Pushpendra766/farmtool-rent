@@ -102,7 +102,7 @@ const Faq = () => {
     }else{
       setFaqs(faqsHindi);
     }
-  })
+  },[])
   return (
     <div className="md:py-5 mobile:py-4">
       <p className="font-bold text-3xl text-center md:pb-2 mobile:pb-1">{t("faqs")}</p>
