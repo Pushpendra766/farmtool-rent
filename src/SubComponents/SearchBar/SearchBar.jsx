@@ -39,6 +39,13 @@ const SearchBar = ({ additionalClass }) => {
                     return <Component data={e} />;
                   })
               : null}
+            {data.filter((e) => {
+              return e.name
+                .toLowerCase()
+                .includes(contextApi.search.toLowerCase());
+            }).length == 0 ? (
+              <p className="text-gray-dark p-0">No Results Found</p>
+            ) : null}
           </div>
         </div>
       ) : null}
