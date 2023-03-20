@@ -25,19 +25,23 @@ const SearchBar = ({ additionalClass }) => {
       <span className="pt-1 cursor-pointer text-[#ffffff]">
         <MdMic size={25} />
       </span>
-      <div className="w-1/4 top-12 absolute bg-white border-dark-green rounded-md grid grid-cols-2 p-3">
-        {contextApi.search
-          ? data
-              .filter((e) => {
-                return e.name
-                  .toLowerCase()
-                  .includes(contextApi.search.toLowerCase());
-              })
-              .map((e) => {
-                return <Component data={e} />;
-              })
-          : null}
-      </div>
+      {contextApi.search || contextApi.search.length > 0 ? (
+        <div>
+          <div className="w-1/4 top-12 left-60 absolute bg-white border-dark-green rounded-md grid grid-cols-2 p-3">
+            {contextApi.search || contextApi.search.length > 0
+              ? data
+                  .filter((e) => {
+                    return e.name
+                      .toLowerCase()
+                      .includes(contextApi.search.toLowerCase());
+                  })
+                  .map((e) => {
+                    return <Component data={e} />;
+                  })
+              : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
