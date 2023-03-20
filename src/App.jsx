@@ -54,8 +54,7 @@ function App() {
     if (val == "yes") {
       setIsLoading(false);
       setAuthenticated(true);
-      setAbout({ "name":username,
-      "email":useremail})
+     
     } else if (!authenticated) {
       toast.info("New user? Sign Up then!");
     }
@@ -235,7 +234,7 @@ function App() {
             path="/profile"
             element={
               <>
-                <Profile about={about}/>
+                <Profile about={about} setAbout={setAbout}/>
                 <Footer />
               </>
             }

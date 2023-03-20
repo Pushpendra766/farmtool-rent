@@ -35,10 +35,7 @@ const Login = ({handleAuthentication,setAbout}) => {
       setEmail("");
       setPassword("");
       handleAuthentication(true);
-      setAbout({
-        "name":fireuser,
-         "email":new_email
-       })
+      
   };
 })}
   return (

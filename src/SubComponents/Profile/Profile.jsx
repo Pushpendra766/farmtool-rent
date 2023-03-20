@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-const Profile = ({about}) => {
+const Profile = ({about,setAbout}) => {
   const [data,setnewData]=useState([])
 
   useEffect(()=>{
     //alert(about.email)
+    let username=localStorage.getItem("RName")
+    let useremail=localStorage.getItem("email")
+   
+    setAbout({ "name":username,
+    "email":useremail})
     async function ofetch() {
       if(about.email!=="undefined"){
       let new_email=about.email.split('@')[0]
@@ -17,8 +22,8 @@ const Profile = ({about}) => {
     }
   }
     ofetch();
-   //alert(data)
-  },[about])
+   alert(data)
+  },[])
   return (
     <>
       <div className="py-16">
