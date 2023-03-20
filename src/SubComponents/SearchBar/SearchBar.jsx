@@ -4,6 +4,7 @@ import { MdMic } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import Context from "../../Context/Context";
 import { data } from "../../data";
+import { useNavigate } from "react-router";
 
 const SearchBar = ({ additionalClass }) => {
   const { t } = useTranslation();
@@ -57,8 +58,15 @@ const SearchBar = ({ additionalClass }) => {
 
 const Component = ({ data }) => {
   const { name, price, url } = data;
+  const history = useNavigate();
   return (
-    <div className="md:w-3/4 mobile:w-full mobile:px-2 md:px-0 my-2 items-center flex justify-center flex-col">
+    <div
+      onClick={(e) => {
+        e.preventDefault();
+        history(`/product/${name}`);
+      }}
+      className="md:w-3/4 mobile:w-full mobile:px-2 md:px-0 my-2 items-center flex justify-center flex-col"
+    >
       <img
         src={url}
         className="rounded-lg m-auto md:h-20 mobile:h-16 object-cover object-center"
