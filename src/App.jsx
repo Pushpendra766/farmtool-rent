@@ -28,7 +28,7 @@ import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
 import LandTools from "./Screens/LandTool/LandTool";
 import LandMap from "./Components/LandMap/LandMap";
-import LandLend from "./Components/LandLend/LandLend";
+import LandLend from "./Screens/LandLend/LandLend";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
