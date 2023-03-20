@@ -44,7 +44,7 @@ const SearchBar = ({ additionalClass }) => {
     }
   };
 
-  console.log(contextApi);
+ // console.log(contextApi);
 
   useEffect(() => {
     if (isListening) {
