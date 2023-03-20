@@ -27,7 +27,7 @@ const SearchBar = ({ additionalClass }) => {
       </span>
       {contextApi.search || contextApi.search.length > 0 ? (
         <div>
-          <div className="w-1/4 top-12 left-60 absolute bg-white border-dark-green rounded-md grid grid-cols-2 p-3">
+          <div className="w-6/12 top-12 left-60 absolute bg-white border-dark-green rounded-md grid grid-cols-4 p-3">
             {contextApi.search || contextApi.search.length > 0
               ? data
                   .filter((e) => {
@@ -47,10 +47,14 @@ const SearchBar = ({ additionalClass }) => {
 };
 
 const Component = ({ data }) => {
-  const { name, price } = data;
+  const { name, price, url } = data;
   return (
-    <div className="w-2/4">
-      <p className="text-gray-dark">{name}</p>
+    <div className="w-3/4 my-2 items-center flex justify-center flex-col">
+      <img
+        src={url}
+        className="rounded-lg m-auto h-20 object-cover object-center"
+      />
+      <p className="text-dark-green font-semibold pl-1 text-center">{name}</p>
     </div>
   );
 };
