@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-//import {data} from "../../data"
+import {data} from "../../data"
 let username, useremail;
 const Profile = () => {
   const history  = useNavigate();
-  const [data,setnewData]=useState([])
+ // const [data,setnewData]=useState([])
  
   useEffect(()=>{
     //alert(about.email)
@@ -14,21 +14,21 @@ const Profile = () => {
      useremail=localStorage.getItem("email")
     
     
-    async function ofetch() {
+  
       
-        let new_email = useremail.split("@")[0];
+    //     let new_email = useremail.split("@")[0];
        
-        await db.ref("users/" + new_email + "/tools/").on(
-          "child_added",
-          function (snapshot) {
-            const messages = snapshot.val();
-            setnewData((data) => [...data, messages]);
-          }
-        );
+    //     await db.ref("users/" + new_email + "/tools/").on(
+    //       "child_added",
+    //       function (snapshot) {
+    //         const messages = snapshot.val();
+    //         setnewData((data) => [...data, messages]);
+    //       }
+    //     );
         
-      }
+    //   }
     
-    ofetch();
+    // ofetch();
     // setInterval(()=>{
     //   console.log(data)
     // },3000)
