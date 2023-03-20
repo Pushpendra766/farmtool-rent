@@ -47,8 +47,6 @@ const Navbar = ({ logstatus, handleAuthentication }) => {
             <button className="w-[100px]" onClick={() => history("/login")}>{t("login")}</button>
             <button className="w-[100px]" onClick={() => history("/signup")}>{t("signup")}</button>
           </span>)}
-
-
       </div>
       <div className="pb-2 mx-4">
         <SearchBar additionalClass="md:hidden" />
