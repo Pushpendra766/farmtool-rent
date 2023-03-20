@@ -13,6 +13,7 @@ const Category = ({ mobile, data }) => {
       ref.current.classList.add("my-5");
       ref.current.classList.remove("w-2/12");
     }
+
   }, [location]);
 
   const { innerWidth } = window;
@@ -40,10 +41,10 @@ const Category = ({ mobile, data }) => {
         <h3 className="md:text-xl mobile:text-[22px]">{data?.name}</h3>
         <p className="text-sm text-dark-green">
           Rs. {data?.price}{" "}
-          <span className="line-through text-orange">{data.price * 1.25}</span>
+          <span className="line-through text-orange">{data?.price * 1.25}</span>
         </p>
         <p className="text-sm text-center px-2">
-          {data?.description.slice(0, 75) + "..."}
+          {data?.description?.slice(0, 75) + "..."}
         </p>
       </div>
     </div>

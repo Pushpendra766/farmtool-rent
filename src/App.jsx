@@ -57,7 +57,8 @@ function App() {
     if (val == "yes") {
       setIsLoading(false);
       setAuthenticated(true);
-      setAbout({ name: username, email: useremail });
+      setAbout({ "name":username,
+      "email":useremail})
     } else if (!authenticated) {
       toast.info("New user? Sign Up then!");
     }
@@ -239,25 +240,7 @@ function App() {
             path="/profile"
             element={
               <>
-                <Profile about={about} />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/profile/landTools"
-            element={
-              <>
-                <LandTools about={about} />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/profile/lendland"
-            element={
-              <>
-                <LandLend about={about} />
+                <Profile />
                 <Footer />
               </>
             }
