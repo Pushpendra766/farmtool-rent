@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
+import i18next from "../../i18n";
 
 const Testimonials = () => {
   const {t} = useTranslation();
@@ -59,12 +59,12 @@ const Testimonials = () => {
     },
   ];
   useEffect(()=>{
-    if(i18n.language == "en"){
+    if(i18next.language == "en"){
       setReviews(reviewsEnglish);
     }else{
       setReviews(reviewsHindi);
     }
-  }, []);
+  }, [i18next.language]);
   
   return (
     <div className="md:my-4 bg-gradient-to-r from-[#c8f7c6] via-[#eef3dc] to-[#c8f7c6] md:py-10 mobile:py-4">
