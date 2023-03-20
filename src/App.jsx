@@ -26,6 +26,7 @@ import Product from "./Screens/Product/Product";
 import Cart from "../src/Screens/Cart/Cart";
 import Profile from "./SubComponents/Profile/Profile";
 import FirebaseData from "./FirebaseData/FirebaseData";
+import LandMap from "./Components/LandMap/LandMap";
 import LandTools from "./Screens/LandTool/LandTool";
 
 function App() {
@@ -139,8 +140,9 @@ function App() {
                         />
                       );
                     })}
-                    <Testimonials />
+                    <LandMap />
                     <Faq />
+                    <Testimonials />
                     <Footer />
                     <ChatbotButton />
                   </>
