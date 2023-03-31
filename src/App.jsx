@@ -29,6 +29,7 @@ import FirebaseData from "./FirebaseData/FirebaseData";
 import LandTools from "./Screens/LandTool/LandTool";
 import LandMap from "./Components/LandMap/LandMap";
 import LandLend from "./Screens/LandLend/LandLend";
+import RentNow from "./Screens/RentNow/RentNow";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -250,6 +251,15 @@ function App() {
             element={
               <>
                 <LandTools/>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/profile/rentnow"
+            element={
+              <>
+                <RentNow />
                 <Footer />
               </>
             }

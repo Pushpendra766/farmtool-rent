@@ -11,7 +11,7 @@ const Profile = ({children}) => {
   const handleCart =()=>{
     history("/cart");
   }
- 
+  
   useEffect(()=>{
     //alert(about.email)
     username=localStorage.getItem("RName")
