@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import db from "../../firebase";
 import Category from "../../Components/Category/Category";
-import {data} from "../../data"
+//import {data} from "../../data"
 let username, useremail;
-const Profile = () => {
-  const history  = useNavigate();
- // const [data,setnewData]=useState([])
+const Profile = ({children}) => {
+  const [data,setnewData]=useState([])
+  const history  = useNavigate('');
+ 
+  const handleCart =()=>{
+    history("/cart");
+  }
  
   useEffect(()=>{
     //alert(about.email)
@@ -15,23 +19,19 @@ const Profile = () => {
     
     
   
-      
-    //     let new_email = useremail.split("@")[0];
-       
-    //     await db.ref("users/" + new_email + "/tools/").on(
-    //       "child_added",
-    //       function (snapshot) {
-    //         const messages = snapshot.val();
-    //         setnewData((data) => [...data, messages]);
-    //       }
-    //     );
+      async function ofetch(){
+        let new_email = useremail.split("@")[0];
         
-    //   }
-    
-    // ofetch();
-    // setInterval(()=>{
-    //   console.log(data)
-    // },3000)
+
+          db.ref("users/"+new_email+"/tools/").on("child_added", function (snapshot) {
+            const messages = snapshot.val();
+            // console.log(data)
+            if(messages)
+            setnewData((data) => [...data, messages]);
+          });
+        }
+        ofetch();
+      
     
   },[])
 
@@ -98,7 +98,7 @@ const Profile = () => {
               <button className="text-white h-min py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Rented Tools
               </button>
-              <button className="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
+              <button onClick={handleCart} className="text-white  h-min py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-small transition transform hover:-translate-y-0.5">
                 Cart
               </button>{" "}
             </div>{" "}
@@ -114,9 +114,9 @@ const Profile = () => {
               Your Equipments
             </p>
           </div>
-          <div className="flex overflow-scroll">{ data.map((e, id) => {
+          <div className="flex overflow-scroll justify-between sm-">{ data.map((e, id) => {
                
-               return <Category key={id} mobile={false} data={e} />
+               return <Category key={id} mobile={true} data={e} />
               })
             }</div>
           

@@ -34,7 +34,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
   const [about, setAbout] = useState({});
-  const navigate = useNavigate();
+  const navigate = useNavigate('');
   const handleAuthentication = (status) => {
     if (status == false) {
       localStorage.clear();
@@ -43,9 +43,9 @@ function App() {
     }
 
     setAuthenticated(status);
-    if (status) {
+    
       navigate("/");
-    }
+   
   };
   useEffect(() => {
     // console.log(about)

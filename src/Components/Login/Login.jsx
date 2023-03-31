@@ -3,7 +3,7 @@ import db from "../../firebase";
 import { ToastContainer, toast ,Slide, Zoom, Flip, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router";
-import bcrypt  from "bcryptjs"
+//import bcrypt  from "bcryptjs"
 const Login = ({handleAuthentication,setAbout}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

@@ -9,7 +9,7 @@ const FirebaseData = () => {
       //    async function fetchData(){
 
       //        data.forEach(async (item, index)=>{
-      //            await db.ref("users/"+"shivam/"+"tools/"+index+"/details/").set({
+      //            await db.ref("users/"+"shivam/"+"tools/"+index).set({
       //               "type": item.type,
       //               "url": item.url,
       //               "name": item.name,
