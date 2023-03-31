@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { data } from "../../data";
 
 const Product = () => {
   const params = useParams();
   const [product, setProduct] = useState();
+  const history  = useNavigate('');
+ 
+  const handlerent =()=>{
+    history("/profile/rentnow")
+    }
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -57,7 +62,7 @@ const Product = () => {
             </span>
           </p>
           <div className="flex gap-6 text-base whitespace-nowrap md:text-lg">
-            <button className="py-2 px-4">Rent</button>
+            <button onClick={handlerent} className="py-2 px-4">Rent</button>
             <button>Add to Rentlist</button>
           </div>
         </div>
