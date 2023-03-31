@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import db from "../../firebase";
 //import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
-import bcrypt  from "bcryptjs"
+//import bcrypt  from "bcryptjs"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Signup = ({handleAuthentication}) => {

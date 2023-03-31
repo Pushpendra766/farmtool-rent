@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
 
-const Category = ({ mobile, data }) => {
+const Category = ({ mobile, data ,children}) => {
   const location = useLocation();
   const ref = useRef();
-  const history = useNavigate();
+  const history = useNavigate('');
 
   useEffect(() => {
     if (location.pathname.includes("Category")) {
