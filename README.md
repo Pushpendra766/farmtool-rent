@@ -12,7 +12,7 @@ This web app aims to help farmers save money by providing an affordable solution
 Overall, the web app provides a simple and efficient solution for farmers to rent and lend tools, making farming more accessible and cost-effective for everyone involved.
 
 ## Preview 
-You can see the live preview [here](https://toolrent.netlify.app/)
+You can see the live preview [here](https://farmrent.netlify.app/)
 
 ## Local environment setup 
 1. Clone the repo.
